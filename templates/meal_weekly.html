@@ -1,0 +1,570 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; }
+
+    /* =========================
+       PAGE / FOOTER (match workout standard)
+       ========================= */
+    @page{
+      margin: 18px 16px;
+      @bottom-center{
+        content: "Motionalyx · Progress made personal · www.motionalyx.com · Page " counter(page) " of " counter(pages);
+        font-size: 10px;
+        color: #666666;
+      }
+    }
+
+    /* GLOBAL BACKGROUND */
+    .page-bg{
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background-image:url('https://cdn.shopify.com/s/files/1/0737/8799/8346/files/1_1764622639.png?v=1764622725');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index:-1;
+    }
+
+    /* =========================
+       GLOBAL TYPO (match workout standard)
+       ========================= */
+    :root{
+      --body-font-size: 20px;
+      --body-line-height: 1.22;
+
+      /* Meal day: compact but SAFE (avoid overlap) */
+      --meal-day-line-height-tight: 1.12;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: var(--body-font-size);
+      line-height: var(--body-line-height);
+      color:#111111;
+      margin:0;
+      padding:0;
+      background: transparent;
+    }
+
+    body, div, span, p, li, ul, ol, strong, em{
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    p, li, div{
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .page-break{ page-break-before: always; }
+
+    /* ---------- ANTI-SPLIT ---------- */
+    .bubble-block,
+    .macro-box,
+    .tips-block,
+    .supplements-block,
+    .day-card,
+    .shopping-card,
+    .next-steps-block,
+    .cover-inner,
+    .cover-goal-box{
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .meal-plan-section{ page-break-before: always; }
+    .shopping-section{ page-break-before: always; }
+
+    .cover-page, .content-wrapper, .content-wrapper-wide{ position: relative; z-index: 1; }
+
+    /* ---------- GENERIC BUBBLE ---------- */
+    .bubble-block{
+      background:#ffffff;
+      border-radius:12px;
+      border:1px solid #b7e7d4;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      white-space: pre-line;
+    }
+
+    /* ✅ WIDE VARIANT (use for Tips + Supplements like workout standard) */
+    .content-wrapper-wide{
+      padding: 12px 2px 18px 2px; /* less side padding */
+      position: relative;
+      z-index: 1;
+    }
+    .bubble-block.bubble-wide{
+      margin-left: 0;
+      margin-right: 0;
+      padding: 14px 18px;
+    }
+
+    /* ---------- COVER ---------- */
+    .cover-page{
+      min-height: 100vh;
+      padding: 30px 18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .cover-inner{
+      max-width: 720px;
+      width: 100%;
+      background:#ffffff;
+      border-radius:20px;
+      padding: 18px 18px;
+      border:1px solid #b7e7d4;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+    }
+
+    .cover-badge{
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #199c6c;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-size: 15px;
+    }
+
+    .cover-title{
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .cover-subtitle{
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .cover-bullets{
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+    .cover-bullets div{ margin-bottom: 2px; }
+
+    .cover-goal-box{
+      background:#ffffff;
+      border-radius:12px;
+      border:1px solid #b7e7d4;
+      padding: 14px 16px;
+      margin: 10px 0 10px 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      white-space: pre-line;
+      text-align:left;
+    }
+
+    .cover-goal-label{
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color:#199c6c;
+      font-weight:bold;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .cover-client-meta{
+      margin-top: 8px;
+      text-align:left;
+    }
+    .cover-client-meta div{ margin-bottom: 2px; }
+
+    .cover-coach-signature{
+      margin-top: 10px;
+      font-style: italic;
+      text-align:left;
+    }
+    .cover-coach-name{ font-weight: bold; }
+
+    .cover-instructions{
+      margin-top: 10px;
+      text-align:left;
+    }
+
+    .cover-footer{
+      margin-top: 10px;
+      text-align:center;
+      color:#444444;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+    .cover-footer-brand{
+      font-weight:bold;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    .content-wrapper{
+      padding: 18px 10px 22px 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow{
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color:#199c6c;
+      font-weight:bold;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .main-title{
+      font-size: 28px;
+      font-weight:bold;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .section-title{
+      font-size: 22px;
+      font-weight:bold;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .section-subtitle{
+      font-size: 16px;
+      color:#444444;
+      margin: 0 0 10px 0;
+      line-height: 1.25;
+    }
+
+    .section-note{
+      font-size: 16px;
+      color:#555555;
+      margin: 0 0 10px 0;
+      line-height: 1.25;
+    }
+
+    /* keep as text block (no extra inner bubble to avoid double borders) */
+    .card-block{ white-space: pre-line; }
+
+    .macro-box{
+      padding: 10px 12px;
+      white-space: pre-line;
+      line-height: 1.18;
+    }
+
+    /* ---------- DAY CARDS (match style + safe-tight) ---------- */
+    .day-card{
+      background:#ffffff;
+      border-radius:12px;
+      border:1px solid #b7e7d4;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      white-space: pre-line;
+      line-height: var(--meal-day-line-height-tight);
+    }
+
+    .day-card-title{
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .day-card p,
+    .day-card div{
+      line-height: var(--meal-day-line-height-tight);
+    }
+    .day-card ul,
+    .day-card ol{
+      margin: 2px 0 4px 0;
+      padding-left: 18px;
+    }
+    .day-card li{
+      margin: 0;
+      padding: 0;
+      line-height: var(--meal-day-line-height-tight);
+    }
+
+    /* ---------- SHOPPING (UPDATED: compact like day cards) ---------- */
+    .shopping-card{
+      background:#ffffff;
+      border-radius:12px;
+      border:1px solid #b7e7d4;
+      padding: 14px 16px;              /* match day-card */
+      margin-bottom: 16px;             /* match day-card spacing */
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      white-space: pre-line;
+      line-height: var(--meal-day-line-height-tight); /* tighter like day cards */
+      font-size: 16px;                 /* slightly smaller => more compact on page */
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .shopping-card-title{
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;             /* same rhythm as day-card-title */
+      line-height: 1.15;
+    }
+
+    /* Make any lists inside shopping blocks compact and 2-column when possible */
+    .shopping-card p,
+    .shopping-card div{
+      line-height: var(--meal-day-line-height-tight);
+      margin: 0;
+    }
+
+    .shopping-card ul,
+    .shopping-card ol{
+      margin: 2px 0 4px 0;
+      padding-left: 18px;
+      column-count: 2;
+      column-gap: 18px;
+    }
+
+    .shopping-card li{
+      margin: 0;
+      padding: 0;
+      line-height: var(--meal-day-line-height-tight);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* If a shopping block is plain text with bullets (•) and line breaks,
+       this helps keep it visually tighter without forcing columns */
+    .shopping-card .shopping-plain{
+      line-height: var(--meal-day-line-height-tight);
+      white-space: pre-line;
+    }
+
+    /* Optional: if some category looks better in 1 column, add class "one-col" to that card */
+    .shopping-card.one-col ul,
+    .shopping-card.one-col ol{
+      column-count: 1;
+    }
+
+    /* ✅ ONLY CHANGE: TIPS line spacing smaller */
+    .tips-block{
+      padding: 10px 12px;
+      white-space: pre-line;
+      line-height: 1.35 !important;
+    }
+
+    .tips-block ul,
+    .tips-block ol{
+      margin: 4px 0 6px 0;
+      padding-left: 22px;
+    }
+
+    .tips-block li{
+      margin: 0 0 6px 0;
+      line-height: 1.35 !important;
+    }
+
+    .tips-block p{
+      margin: 0 0 6px 0;
+      line-height: 1.35 !important;
+    }
+
+    /* ---------- SUPPLEMENTS (WIDE) ---------- */
+    .supplements-block{
+      white-space: pre-line;
+      line-height: var(--body-line-height);
+    }
+
+    /* ---------- NEXT STEPS ---------- */
+    .next-steps-list{
+      margin: 0;
+      padding-left: 22px;
+    }
+    .next-steps-list li{ margin-bottom: 6px; }
+
+    .next-steps-block{
+      white-space: pre-line;
+      line-height: 1.18;
+    }
+
+    .disclaimer{
+      margin-top: 10px;
+      font-size: 14px;
+      color:#555555;
+      line-height: 1.25;
+      white-space: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-bg"></div>
+
+  <!-- COVER PAGE -->
+  <div class="cover-page">
+    <div class="cover-inner">
+      <div class="cover-badge">Motionalyx · Progress made personal.</div>
+      <div class="cover-title">Weekly Meal Plan Update</div>
+      <div class="cover-subtitle">Your updated 7-day nutrition plan based on your latest check-in.</div>
+
+      <div class="cover-bullets">
+        <div>• Small improvements based on your week</div>
+        <div>• Familiar structure with smart adjustments</div>
+        <div>• Simple meals you can stick to</div>
+      </div>
+
+      <div class="cover-goal-box">
+        <div class="cover-goal-label">Your current focus</div>
+        <div>{{goal_summary}}</div>
+      </div>
+
+      <div class="cover-client-meta">
+        <div><strong>Client:</strong> {{client_name}}</div>
+        <div><strong>Week starting:</strong> {{plan_date}}</div>
+      </div>
+
+      <div class="cover-coach-signature">
+        Updated by <span class="cover-coach-name">Coach {{coach_name}}</span>
+      </div>
+
+      <div class="cover-instructions">
+        <strong>This plan covers your next 7 days.</strong>
+        Follow it as closely as possible, stay flexible, and give honest feedback at your next check-in.
+      </div>
+
+      <div class="cover-footer">
+        <div class="cover-footer-brand">Motionalyx</div>
+        <div>Progress made personal · www.motionalyx.com</div>
+        <div>Nutrition coaching — This is not a medical prescription.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block">
+      <div class="eyebrow">Motionalyx</div>
+      <div class="main-title">Your Nutrition Blueprint</div>
+
+      <div class="section-title">Welcome &amp; Overview</div>
+      <div class="card-block">{{welcome_block}}</div>
+    </div>
+
+    <div class="bubble-block">
+      <div class="section-title">Your Calorie &amp; Macro Targets</div>
+      <div class="macro-box">{{macro_block}}</div>
+    </div>
+
+    <div class="bubble-block">
+      <div class="section-title">How Your Plan Works</div>
+      <div class="card-block">{{how_it_works_block}}</div>
+    </div>
+  </div>
+
+  <!-- MEAL PLAN -->
+  <div class="content-wrapper meal-plan-section">
+    <div class="bubble-block">
+      <div class="section-title">7-Day Meal Plan</div>
+      <div class="section-subtitle">Breakfast · Lunch · Dinner · Snack</div>
+    </div>
+
+    <div class="day-card"><div class="day-card-title">DAY 1</div>{{meal_day1_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 2</div>{{meal_day2_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 3</div>{{meal_day3_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 4</div>{{meal_day4_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 5</div>{{meal_day5_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 6</div>{{meal_day6_block}}</div>
+    <div class="day-card"><div class="day-card-title">DAY 7</div>{{meal_day7_block}}</div>
+  </div>
+
+  <!-- SHOPPING -->
+  <div class="content-wrapper shopping-section">
+    <div class="bubble-block">
+      <div class="section-title">Shopping List</div>
+      <div class="section-note">Quantities approximate for one person.</div>
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Proteins</div>
+      {{shopping_proteins_block}}
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Carbohydrates &amp; Whole Grains</div>
+      {{shopping_carbs_block}}
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Fruits &amp; Vegetables</div>
+      {{shopping_fruit_veg_block}}
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Healthy Fats &amp; Oils</div>
+      {{shopping_fats_block}}
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Dairy or Plant Alternatives</div>
+      {{shopping_dairy_block}}
+    </div>
+
+    <div class="shopping-card">
+      <div class="shopping-card-title">Extras &amp; Condiments</div>
+      {{shopping_extras_block}}
+    </div>
+  </div>
+
+  <!-- TIPS (WIDE) -->
+  <div class="page-break"></div>
+  <div class="content-wrapper-wide">
+    <div class="bubble-block bubble-wide">
+      <div class="section-title">Daily Lifestyle Tips</div>
+      <div class="tips-block">{{tips_block}}</div>
+    </div>
+  </div>
+
+  <!-- SUPPLEMENTS (WIDE) -->
+  <div class="page-break"></div>
+  <div class="content-wrapper-wide">
+    <div class="bubble-block bubble-wide">
+      <div class="section-title">Motionalyx Supplement Recommendations</div>
+      <div class="supplements-block">{{supplements_block}}</div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block">
+      <div class="section-title">Next Steps &amp; Weekly Check-In</div>
+      <div class="next-steps-block">
+        <ul class="next-steps-list">
+          <li>Follow this plan for the next 7 days.</li>
+          <li>You will receive your weekly check-in link by email.</li>
+          <li>Your next plan will be updated based on your feedback.</li>
+        </ul>
+        <div class="disclaimer">
+          <strong>Important:</strong> This plan provides general guidance only and is not a medical prescription.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
