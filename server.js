@@ -13,6 +13,7 @@ app.use(express.json({ limit: "25mb" }));
 // ---- ENV ----
 const BUCKET_NAME = process.env.BUCKET_NAME || ""; // npr: "motionalyx-pdfs-motionalyx-pdf-service"
 const PDF_URL_TTL_MINUTES = Number(process.env.PDF_URL_TTL_MINUTES || "10080"); // default 7 dni
+const CHROMIUM_PATH = process.env.CHROMIUM_PATH || "/usr/bin/chromium"; // system chromium inside Docker
 
 // ---- PATH HELPERS ----
 const __filename = fileURLToPath(import.meta.url);
@@ -71,6 +72,7 @@ function renderTemplate(html, data) {
 // ---- PDF GENERATION ----
 async function htmlToPdfBuffer(html) {
   const browser = await chromium.launch({
+    executablePath: CHROMIUM_PATH, // <-- IMPORTANT: use system chromium from Docker
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
@@ -159,7 +161,10 @@ app.post("/pdfs", async (req, res) => {
       const pdfBuffer = await htmlToPdfBuffer(html);
 
       const safeName = payload.client_name
-        ? String(payload.client_name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+        ? String(payload.client_name)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "")
         : "client";
 
       const fileName = `${key}_${safeName}_${jobId}.pdf`;
