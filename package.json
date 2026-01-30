@@ -1,0 +1,19 @@
+{
+  "name": "motionalyx-pdf-service",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.16.0",
+    "express": "^4.21.2",
+    "playwright": "^1.49.1",
+    "uuid": "^9.0.1"
+  }
+}
