@@ -27,6 +27,15 @@ function nowStamp() {
   )}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}`;
 }
 
+function safeSlug(input) {
+  if (!input) return "client";
+  return String(input)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 80);
+}
+
 // ---- SIMPLE DATE FORMAT (supports "%B %d, %Y") ----
 function formatDate(input, fmt) {
   if (!input) return "";
@@ -69,19 +78,27 @@ function renderTemplate(html, data) {
   return html;
 }
 
-// ---- PDF GENERATION ----
+// ---- PLAYWRIGHT (REUSE BROWSER FOR SPEED) ----
+let browserPromise = null;
+
+async function getBrowser() {
+  if (!browserPromise) {
+    browserPromise = chromium.launch({
+      executablePath: CHROMIUM_PATH,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+  }
+  return browserPromise;
+}
+
 async function htmlToPdfBuffer(html) {
-  const browser = await chromium.launch({
-    executablePath: CHROMIUM_PATH, // <-- IMPORTANT: use system chromium from Docker
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await getBrowser();
+  const context = await browser.newContext();
 
   try {
-    const page = await browser.newPage();
-    // Important: wait until images load
+    const page = await context.newPage();
     await page.setContent(html, { waitUntil: "networkidle" });
 
-    // preferCSSPageSize = honors @page settings in your templates
     const pdf = await page.pdf({
       printBackground: true,
       preferCSSPageSize: true,
@@ -90,7 +107,7 @@ async function htmlToPdfBuffer(html) {
     await page.close();
     return pdf;
   } finally {
-    await browser.close();
+    await context.close();
   }
 }
 
@@ -126,7 +143,7 @@ async function uploadPdfAndSign({ buffer, objectName }) {
   };
 }
 
-// ---- TEMPLATE MAP (we will add these files next) ----
+// ---- TEMPLATE MAP ----
 const TEMPLATE_FILES = {
   meal_first: path.join(__dirname, "templates", "meal_first.html"),
   meal_weekly: path.join(__dirname, "templates", "meal_weekly.html"),
@@ -136,47 +153,126 @@ const TEMPLATE_FILES = {
   bundle_weekly: path.join(__dirname, "templates", "bundle_weekly.html"),
 };
 
+function resolveTemplateKey(reqBody, reqQuery) {
+  // Allow: body.template_key OR query ?template_key= OR ?template=
+  return (
+    reqBody?.template_key ||
+    reqQuery?.template_key ||
+    reqQuery?.template ||
+    ""
+  );
+}
+
+async function generateOnePdf({ templateKey, payload }) {
+  const tplPath = TEMPLATE_FILES[templateKey];
+  if (!tplPath) {
+    const keys = Object.keys(TEMPLATE_FILES);
+    throw new Error(`Unknown template_key "${templateKey}". Allowed: ${keys.join(", ")}`);
+  }
+
+  const htmlRaw = await fs.readFile(tplPath, "utf8");
+  const html = renderTemplate(htmlRaw, payload);
+  const pdfBuffer = await htmlToPdfBuffer(html);
+
+  const jobId = payload.job_id || crypto.randomUUID();
+  const basePrefix = payload.prefix || `pdfs/${nowStamp()}_${jobId}`;
+
+  const safeName = safeSlug(payload.client_name);
+  const fileName = `${templateKey}_${safeName}_${jobId}.pdf`;
+  const objectName = `${basePrefix}/${fileName}`;
+
+  const uploaded = await uploadPdfAndSign({ buffer: pdfBuffer, objectName });
+
+  return {
+    template_key: templateKey,
+    job_id: jobId,
+    bucket: BUCKET_NAME,
+    fileName,
+    objectName,
+    ...uploaded,
+  };
+}
+
 // ---- ROUTES ----
 app.get("/", (_req, res) => res.status(200).json({ ok: true, service: "motionalyx-pdf" }));
 app.get("/health", (_req, res) => res.status(200).json({ ok: true }));
 
+// (Optional) list templates for debugging
+app.get("/templates", (_req, res) => {
+  res.status(200).json({ ok: true, template_keys: Object.keys(TEMPLATE_FILES) });
+});
+
+/**
+ * POST /pdf
+ * Generates ONLY ONE PDF.
+ *
+ * Body example (flat payload + template_key):
+ * {
+ *   "template_key": "meal_weekly",
+ *   "client_name": "...",
+ *   "plan_date": "...",
+ *   ...
+ * }
+ *
+ * Response:
+ * { ok:true, file:{ url, gcsPath, fileName, ... } }
+ */
+app.post("/pdf", async (req, res) => {
+  try {
+    const payload = req.body || {};
+    const templateKey = resolveTemplateKey(payload, req.query);
+
+    if (!templateKey) {
+      return res.status(400).json({
+        ok: false,
+        error: `Missing template_key. Allowed: ${Object.keys(TEMPLATE_FILES).join(", ")}`,
+      });
+    }
+
+    const file = await generateOnePdf({ templateKey, payload });
+
+    res.status(200).json({
+      ok: true,
+      file,
+    });
+  } catch (err) {
+    res.status(500).json({
+      ok: false,
+      error: err?.message || String(err),
+    });
+  }
+});
+
 /**
  * POST /pdfs
- * Payload: flat JSON (same payload for all templates).
- * Generates 6 PDFs, uploads to GCS, returns signed URLs.
+ * Optional multi-generate, but ONLY the ones you specify.
+ * - If body.template_keys is provided (array), it generates only those.
+ * - If not provided, it generates ALL (backward compatible).
+ *
+ * Body example:
+ * {
+ *   "template_keys": ["meal_weekly", "workout_weekly"],
+ *   ...same payload fields...
+ * }
  */
 app.post("/pdfs", async (req, res) => {
   try {
     const payload = req.body || {};
+    const requested = Array.isArray(payload.template_keys) ? payload.template_keys : null;
 
-    // optional: allow custom folder or job id
-    const jobId = payload.job_id || crypto.randomUUID();
-    const basePrefix = payload.prefix || `pdfs/${nowStamp()}_${jobId}`;
+    const keysToGenerate = requested && requested.length > 0
+      ? requested
+      : Object.keys(TEMPLATE_FILES);
 
     const results = {};
-    for (const [key, tplPath] of Object.entries(TEMPLATE_FILES)) {
-      const htmlRaw = await fs.readFile(tplPath, "utf8");
-      const html = renderTemplate(htmlRaw, payload);
-
-      const pdfBuffer = await htmlToPdfBuffer(html);
-
-      const safeName = payload.client_name
-        ? String(payload.client_name)
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-|-$/g, "")
-        : "client";
-
-      const fileName = `${key}_${safeName}_${jobId}.pdf`;
-      const objectName = `${basePrefix}/${fileName}`;
-
-      const uploaded = await uploadPdfAndSign({ buffer: pdfBuffer, objectName });
-      results[key] = { fileName, ...uploaded };
+    for (const key of keysToGenerate) {
+      const file = await generateOnePdf({ templateKey: key, payload });
+      results[key] = file;
     }
 
     res.status(200).json({
       ok: true,
-      job_id: jobId,
+      job_id: payload.job_id || null,
       bucket: BUCKET_NAME,
       files: results,
     });
@@ -187,6 +283,23 @@ app.post("/pdfs", async (req, res) => {
     });
   }
 });
+
+// ---- GRACEFUL SHUTDOWN ----
+async function shutdown() {
+  try {
+    if (browserPromise) {
+      const browser = await browserPromise;
+      await browser.close();
+    }
+  } catch (_e) {
+    // ignore
+  } finally {
+    process.exit(0);
+  }
+}
+
+process.on("SIGTERM", shutdown);
+process.on("SIGINT", shutdown);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
