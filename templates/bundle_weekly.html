@@ -51,6 +51,8 @@
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+      --shopping-line-height: 1.12;
     }
 
     body{
@@ -68,42 +70,180 @@
       line-height: inherit;
     }
 
-    p, li, div{
+    p, li{
+      orphans: 3;
+      widows: 3;
       overflow-wrap: anywhere;
-      word-break: normal;
     }
 
+    /* =========================
+       PAGE FLOW HELPERS
+       ========================= */
     .page-break{ page-break-before: always; }
 
-    /* Keep inside page */
-    .keep-together{
+    .content-wrapper{
+      position: relative;
+      z-index: 1;
+      padding: 16px 10px 20px 10px;
+    }
+
+    .content-wrapper-wide{
+      position: relative;
+      z-index: 1;
+      padding: 16px 12px 24px 12px;
+    }
+
+    /* =========================
+       COVER PAGE
+       ========================= */
+    .cover-page{
+      min-height: 100vh;
+      padding: 30px 18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-inner{
+      max-width: 720px;
+      width: 100%;
+      background:#fff;
+      border-radius:20px;
+      padding: 18px 18px;
+      border: var(--card-border);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
-    /* =========================
-       WRAPPERS
-       ========================= */
-    .content-wrapper{
-      padding: 16px 10px 20px 10px;
-      position: relative;
-      z-index: 1;
+    .cover-logo{
+      width: 150px;
+      margin: 0 auto 10px auto;
+      display:block;
     }
-    .content-wrapper-wide{
-      padding: 12px 2px 18px 2px;
-      position: relative;
-      z-index: 1;
+
+    .cover-badge{
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #199c6c;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-size: 15px;
+    }
+
+    .cover-title{
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .cover-subtitle{
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.25;
+      color:#222;
+    }
+
+    .cover-bullets{
+      margin: 10px auto 8px auto;
+      text-align:center;
+      max-width: 640px;
+      font-size: 16px;
+      line-height: 1.35;
+      color:#111;
+    }
+    .cover-bullets div{ margin: 4px 0; }
+
+    .cover-goal-box{
+      margin: 10px auto 10px auto;
+      text-align: left;
+      max-width: 640px;
+      background: #f7fbf9;
+      border: 1px solid #d7f2e7;
+      border-radius: 14px;
+      padding: 12px 14px;
+      line-height: 1.25;
+      white-space: normal;
+    }
+
+    .cover-goal-label{
+      font-size: 14px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color:#199c6c;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .cover-client-meta{
+      margin-top: 8px;
+      text-align:left;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+    .cover-client-meta div{ margin-bottom: 2px; }
+
+    .cover-coach-signature{
+      margin-top: 10px;
+      font-size: 16px;
+      text-align:left;
+      line-height: 1.25;
+      font-style: italic;
+    }
+    .cover-coach-name{ font-weight: 800; font-style: normal; }
+
+    .cover-instructions{
+      margin-top: 12px;
+      text-align:left;
+      font-size: 15px;
+      line-height: 1.25;
+      color:#333;
+      background:#ffffff;
+      border: 1px dashed #b7e7d4;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .cover-footer{
+      margin-top: 12px;
+      text-align:center;
+      color:#444;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .cover-footer-brand{
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color:#199c6c;
+      margin-bottom: 4px;
+    }
+
+    .disclaimer{
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.25;
+      color:#666;
     }
 
     /* =========================
-       TITLES
+       HEADINGS
        ========================= */
     .section-title{
       font-size: var(--fs-main);
       font-weight: var(--fw-main);
-      margin: 0 0 var(--space-1) 0;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin: 0 0 var(--space-1) 0;
       line-height: 1.15;
       page-break-after: avoid;
       break-after: avoid;
@@ -112,9 +252,9 @@
     .section-subtitle{
       font-size: var(--fs-sub);
       font-weight: var(--fw-sub);
+      color:#444;
       margin: 0 0 var(--space-2) 0;
-      color:#333;
-      line-height: 1.22;
+      line-height: 1.25;
       page-break-after: avoid;
       break-after: avoid;
     }
@@ -130,16 +270,38 @@
       break-after: avoid;
     }
 
+    h1, h2, h3, h4{
+      margin: 0 0 var(--space-1) 0;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+    h1, h2{
+      font-size: var(--fs-title);
+      font-weight: var(--fw-title);
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      line-height: 1.15;
+    }
+    h3, h4{
+      font-size: var(--fs-sub);
+      font-weight: var(--fw-sub);
+      color:#333;
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+    }
+
     /* =========================
-       CARDS / BUBBLES
+       BUBBLE / CARD
        ========================= */
     .bubble-block{
       background:#fff;
       border-radius: var(--card-radius);
       border: var(--card-border);
       padding: 14px 16px;
+      white-space: pre-line;
       box-shadow: var(--card-shadow);
       margin-bottom: var(--space-3);
+
       page-break-inside: auto;
       break-inside: auto;
     }
@@ -150,159 +312,22 @@
       padding: 14px 18px;
     }
 
+    .keep-together{
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
     /* =========================
-       COVER PAGE
+       LISTS (base)
        ========================= */
-    .cover-page{
-      position: relative;
-      min-height: 100vh;
-      z-index: 1;
+    ul, ol{
+      margin: 6px 0 10px 0;
+      padding-left: 18px;
     }
-
-    .cover-inner{
-      padding: 22px 18px 24px 18px;
-    }
-
-    .cover-logo{
-      width: 240px;
-      height: auto;
-      display: block;
-      margin: 0 auto 12px auto;
-    }
-
-    .cover-badge{
-      text-align: center;
-      font-size: 13px;
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
-      color: #1e7d57;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .cover-title{
-      text-align: center;
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: 0.8px;
-      margin-bottom: 10px;
-      line-height: 1.02;
-    }
-
-    .cover-subtitle{
-      text-align: center;
-      font-size: 16px;
-      color: #222;
-      margin: 0 auto 16px auto;
-      max-width: 520px;
-      line-height: 1.35;
-    }
-
-    .cover-bullets{
-      max-width: 540px;
-      margin: 0 auto 16px auto;
-      font-size: 15px;
-      line-height: 1.35;
-      color: #111;
-    }
-    .cover-bullets div{ margin-bottom: 6px; }
-
-    .cover-goal-box{
-      max-width: 560px;
-      margin: 14px auto 14px auto;
-      border-radius: 14px;
-      border: 1px solid #b7e7d4;
-      padding: 14px 16px;
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .cover-goal-label{
-      font-size: 12px;
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
-      color:#1e7d57;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .cover-client-meta{
-      max-width: 560px;
-      margin: 0 auto 14px auto;
-      font-size: 14px;
-      line-height: 1.45;
-      background: rgba(255,255,255,0.92);
-      border-radius: 14px;
-      border: 1px solid #b7e7d4;
-      padding: 12px 14px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-
-    .cover-coach-signature{
-      text-align: center;
-      margin-top: 12px;
-      font-size: 14px;
-      color:#111;
-    }
-
-    .cover-coach-name{ font-weight: 900; color:#1e7d57; }
-
-    .cover-instructions{
-      max-width: 560px;
-      margin: 14px auto 0 auto;
-      font-size: 13px;
-      line-height: 1.45;
-      color: #222;
-      text-align: center;
-      background: rgba(255,255,255,0.90);
-      border-radius: 14px;
-      border: 1px solid #b7e7d4;
-      padding: 12px 14px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-
-    .cover-footer{
-      margin-top: 18px;
-      text-align: center;
-      font-size: 12px;
-      color: #333;
-      line-height: 1.35;
-    }
-    .cover-footer-brand{
-      font-weight: 900;
-      letter-spacing: 0.8px;
-      color:#1e7d57;
-      margin-bottom: 4px;
-    }
-
-    .disclaimer{
-      margin-top: 10px;
-      font-size: 12px;
-      color:#444;
-      line-height: 1.35;
-    }
+    li{ margin: 0 0 6px 0; }
 
     /* =========================
-       PART INTRO KICKERS
-       ========================= */
-    .part-kicker{
-      font-size: 14px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      font-weight: 900;
-      color:#199c6c;
-      margin: 0 0 6px 0;
-      line-height: 1.2;
-    }
-    .part-subkicker{
-      font-size: 15px;
-      color:#555;
-      margin: 0 0 12px 0;
-      line-height: 1.25;
-      white-space: normal;
-    }
-
-    /* =========================
-       MEAL: WELCOME / HOW IT WORKS
+       MEAL: WELCOME + MACROS + HOW IT WORKS
        ========================= */
     .welcome-text{
       white-space: pre-line;
@@ -336,23 +361,16 @@
       line-height: 1.22;
     }
     .day-content p{ margin: 0 0 8px 0; }
-    .day-content ul, .day-content ol{
-      margin: 8px 0 10px 0;
-      padding-left: 20px;
+    .day-content ul, .day-content ol{ margin-top: 6px; }
+    .day-content li{
+      margin: 0 0 3px 0;
+      line-height: 1.16;
     }
-    .day-content li{ margin: 0 0 8px 0; line-height: 1.22; }
+    .day-content > :last-child{ margin-bottom: 0 !important; }
 
     /* =========================
        SHOPPING LIST
        ========================= */
-    .shopping-section{ padding-top: 6px; }
-    .shopping-note{
-      font-size: 13px;
-      color:#333;
-      margin-top: 2px;
-      line-height: 1.25;
-    }
-
     .shopping-card{
       background:#ffffff;
       border-radius: var(--card-radius);
@@ -361,6 +379,9 @@
       margin-bottom: 16px;
       box-shadow: var(--card-shadow);
       white-space: pre-line;
+
+      font-size: 16px;
+      line-height: var(--shopping-line-height);
 
       page-break-inside: avoid;
       break-inside: avoid;
@@ -377,10 +398,20 @@
       break-after: avoid;
     }
 
+    .shopping-note{
+      font-size: var(--fs-sub);
+      font-weight: var(--fw-sub);
+      color:#555;
+      margin: 0 0 var(--space-2) 0;
+      line-height: 1.25;
+      white-space: normal;
+    }
+
     .shopping-card ul,
     .shopping-card ol{
       margin: 2px 0 0 0;
       padding-left: 18px;
+      line-height: var(--shopping-line-height);
 
       column-count: 2;
       column-gap: 18px;
@@ -390,17 +421,24 @@
     }
 
     .shopping-card li{
-      margin: 0 0 5px 0;
+      margin: 0 0 4px 0;
+      padding: 0;
+      line-height: var(--shopping-line-height);
+
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
     /* =========================
-       MEAL: TIPS / SUPPS
+       MEAL: TIPS / SUPPLEMENTS
        ========================= */
     .tips-text{
       white-space: pre-line;
       margin: 0;
+      line-height: 1.65;
+    }
+    .tips-text li{
+      margin: 0 0 10px 0;
       line-height: 1.65;
     }
 
@@ -409,63 +447,129 @@
       margin: 0;
       line-height: 1.25;
     }
+    .supplements-text p{ margin: 0 0 6px 0; }
+    .supplements-text ul, .supplements-text ol{
+      margin: 4px 0 8px 0;
+      padding-left: 18px;
+    }
+    .supplements-text li{
+      margin: 0 0 4px 0;
+      line-height: 1.25;
+    }
 
     /* =========================
-       TRAINING: WELCOME / SCHEDULE
+       TRAINING: WELCOME / SCHEDULE / SESSIONS
        ========================= */
     .training-welcome{
       white-space: pre-line;
       line-height: 1.62;
     }
+    .training-welcome p{ margin: 0 0 10px 0; }
+    .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; }
 
     .weekly-schedule{
       white-space: pre-line;
       line-height: 1.45;
     }
+    .weekly-schedule li{ margin: 0 0 10px 0; }
 
     /* =========================
-       TRAINING: SESSION DAY BUBBLES
+       ✅ SESSION BUBBLES
        ========================= */
+    .session-bubble{
+      min-height: 0;
+      padding: 14px 16px 16px 16px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
     .day-card-title{
       font-size: var(--fs-title);
       font-weight: var(--fw-title);
       text-transform: uppercase;
-      margin: 0 0 var(--space-2) 0;
+      margin: 0 0 8px 0;
       letter-spacing: 0.9px;
       line-height: 1.15;
       page-break-after: avoid;
       break-after: avoid;
     }
 
-    .session-bubble{
-      min-height: 0;                 /* ✅ KEY: removes forced full-page stretching */
-      padding: 14px 16px 16px 16px;  /* slightly tighter */
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-
     .session-content{
       white-space: pre-line;
-      font-size: 16px;              /* ✅ small downshift only for sessions */
-      line-height: 1.08;            /* ✅ tighter rows */
+      font-size: 16px;
+      line-height: 1.08;
     }
 
+    .session-content p,
+    .session-content div{
+      margin: 0 0 3px 0;
+      padding: 0;
+      line-height: 1.08;
+    }
+
+    .session-content p:empty,
+    .session-content div:empty{
+      display:none !important;
+    }
+
+    .session-content ul,
+    .session-content ol{
+      margin: 2px 0 5px 0;
+      padding-left: 16px;
+      line-height: 1.08;
+    }
+
+    .session-content li{
+      margin: 0 0 2px 0;
+      padding: 0;
+      line-height: 1.08;
+    }
+
+    .session-content br + br{ display:none !important; }
+
     /* =========================
-       NEXT STEPS / NOTES
+       NEXT STEPS
        ========================= */
     .next-steps-list{
       margin: 8px 0 0 0;
-      padding-left: 20px;
-      line-height: 1.35;
-      font-size: 17px;
+      padding-left: 18px;
     }
-    .next-steps-list li{ margin: 0 0 6px 0; }
+    .next-steps-list li{ margin: 0 0 8px 0; }
 
-    .notes-lines{ margin-top: 18px; }
+    /* =========================
+       NOTES
+       ========================= */
+    .notes-lines{
+      margin-top: 10px;
+      padding-top: 2px;
+    }
     .note-line{
+      display:block;
+      width:100%;
+      border-bottom: 1px solid #d2d2d2;
       height: 22px;
-      border-bottom: 1px solid rgba(0,0,0,0.18);
-      margin-bottom: 10px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* =========================
+       PART TAG
+       ========================= */
+    .part-kicker{
+      font-size: 14px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color:#199c6c;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+    .part-subkicker{
+      font-size: 15px;
+      color:#555;
+      margin: 0 0 12px 0;
+      line-height: 1.25;
+      white-space: normal;
     }
   </style>
 </head>
@@ -501,7 +605,7 @@
 
       <div class="cover-client-meta">
         <div><strong>Client:</strong> {{client_name}}</div>
-        <div><strong>Start date:</strong> {{plan_date}}</div>
+        <div><strong>Start date:</strong> {{ plan_date | date: "%B %d, %Y" }}</div>
       </div>
 
       <div class="cover-coach-signature">
@@ -620,7 +724,8 @@
   </div>
 
   <!-- ===================== SHOPPING LIST ===================== -->
-  <div class="content-wrapper shopping-section">
+  <div class="page-break"></div>
+  <div class="content-wrapper">
     <div class="bubble-block keep-together">
       <div class="section-title">Shopping List</div>
       <div class="shopping-note">Quantities approximate for one person.</div>
@@ -767,7 +872,7 @@
     </div>
   </div>
 
-  <!-- ===================== WEEKLY PROGRESSION ===================== -->
+  <!-- ===================== PROGRESSION ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -789,8 +894,8 @@
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="section-title">Supplement Suggestions</div>
-      <div class="section-subtitle">Optional additions based on your goal + training load.</div>
+      <div class="section-title">Motionalyx Supplement Recommendations</div>
+      <div class="section-subtitle">Optional support on top of consistent training, sleep and nutrition.</div>
       {{workout_supplements_block}}
     </div>
   </div>
@@ -809,7 +914,7 @@
     </div>
   </div>
 
-  <!-- ===================== NOTES (1:1 from workout_weekly) ===================== -->
+  <!-- ===================== NOTES ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -819,6 +924,10 @@
       </div>
 
       <div class="notes-lines">
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
         <div class="note-line"></div>
         <div class="note-line"></div>
         <div class="note-line"></div>
