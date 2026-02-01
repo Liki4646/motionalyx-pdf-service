@@ -6,9 +6,6 @@
   <style>
     * { box-sizing: border-box; }
 
-    /* =========================
-       PAGE / FOOTER
-       ========================= */
     @page{
       margin: 18px 16px;
       @bottom-center{
@@ -18,7 +15,6 @@
       }
     }
 
-    /* GLOBAL BACKGROUND */
     .page-bg{
       position: fixed;
       top:0; left:0; right:0; bottom:0;
@@ -29,9 +25,6 @@
       z-index:-1;
     }
 
-    /* =========================
-       GLOBAL TYPO SYSTEM
-       ========================= */
     :root{
       --fs-body: 18px;
       --lh-body: 1.28;
@@ -75,9 +68,6 @@
 
     .page-break{ page-break-before: always; }
 
-    /* =========================
-       WRAPPERS
-       ========================= */
     .cover-page, .content-wrapper, .content-wrapper-wide{
       position: relative;
       z-index: 1;
@@ -91,9 +81,6 @@
       padding: 12px 2px 18px 2px;
     }
 
-    /* =========================
-       CONSISTENT HEADINGS
-       ========================= */
     .section-title{
       font-size: var(--fs-main);
       font-weight: var(--fw-main);
@@ -126,7 +113,6 @@
       break-after: avoid;
     }
 
-    /* Optional helpers for injected HTML */
     h1, h2, h3, h4{
       margin: 0 0 var(--space-1) 0;
       page-break-after: avoid;
@@ -147,9 +133,6 @@
       line-height: 1.2;
     }
 
-    /* =========================
-       BUBBLE / CARD
-       ========================= */
     .bubble-block{
       background:#fff;
       border-radius: var(--card-radius);
@@ -174,9 +157,6 @@
       break-inside: avoid;
     }
 
-    /* =========================
-       LISTS (base)
-       ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
       padding-left: 22px;
@@ -187,7 +167,7 @@
     }
 
     /* =========================
-       COVER PAGE
+       COVER
        ========================= */
     .cover-page{
       min-height: 100vh;
@@ -308,7 +288,7 @@
     }
 
     /* =========================
-       PAGE 2: WELCOME / MACROS
+       CONTENT TEXT
        ========================= */
     .welcome-text{
       white-space: pre-line;
@@ -320,17 +300,11 @@
       line-height: 1.35;
     }
 
-    /* =========================
-       HOW IT WORKS (own page)
-       ========================= */
     .how-it-works-text{
       white-space: pre-line;
       line-height: 1.45;
     }
 
-    /* =========================
-       MEAL DAYS (compact like workout day sessions)
-       ========================= */
     .day-content{
       white-space: pre-line;
       line-height: 1.16;
@@ -348,8 +322,10 @@
     }
 
     /* =========================
-       ✅ SHOPPING LIST (MATCH OLD WORKING COLUMN BEHAVIOR)
-       - columns applied to UL/OL directly (works in your renderer)
+       ✅ SHOPPING LIST (FIXED)
+       - DO NOT force keep-together on the entire card
+       - columns on UL/OL
+       - avoid breaks only per-item
        ========================= */
     .shopping-note{
       font-size: var(--fs-sub);
@@ -368,12 +344,12 @@
       box-shadow: var(--card-shadow);
       white-space: pre-line;
 
-      /* slightly tighter to fit, like your old template */
       font-size: 16px;
       line-height: 1.12;
 
-      page-break-inside: avoid;
-      break-inside: avoid;
+      /* ✅ IMPORTANT: allow the card to break if it is long */
+      page-break-inside: auto;
+      break-inside: auto;
     }
 
     .shopping-card-title{
@@ -383,9 +359,10 @@
       font-weight: 800;
       margin: 0 0 10px 0;
       line-height: 1.15;
+      page-break-after: avoid;
+      break-after: avoid;
     }
 
-    /* Tighten any text nodes */
     .shopping-card p,
     .shopping-card div{
       margin: 0;
@@ -393,7 +370,6 @@
       line-height: 1.12;
     }
 
-    /* ✅ The key part: columns on list itself */
     .shopping-card ul,
     .shopping-card ol{
       margin: 2px 0 4px 0;
@@ -403,10 +379,11 @@
       column-count: 2;
       column-gap: 18px;
 
-      page-break-inside: avoid;
-      break-inside: avoid;
+      page-break-inside: auto;
+      break-inside: auto;
     }
 
+    /* ✅ Prevent single list items splitting */
     .shopping-card li{
       margin: 0 0 4px 0;
       padding: 0;
@@ -416,14 +393,6 @@
       break-inside: avoid;
     }
 
-    .shopping-card.one-col ul,
-    .shopping-card.one-col ol{
-      column-count: 1;
-    }
-
-    /* =========================
-       TIPS / SUPPLEMENTS / NEXT STEPS
-       ========================= */
     .tips-text{
       white-space: pre-line;
       line-height: 1.65;
@@ -529,7 +498,7 @@
     </div>
   </div>
 
-  <!-- ===================== PAGE 3: HOW IT WORKS (own page) ===================== -->
+  <!-- ===================== PAGE 3: HOW IT WORKS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -539,7 +508,7 @@
     </div>
   </div>
 
-  <!-- ===================== MEAL PLAN: HEADER + DAY 1 (same page) ===================== -->
+  <!-- ===================== MEAL PLAN: HEADER + DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -553,7 +522,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 2 (own page) ===================== -->
+  <!-- DAY 2 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -562,7 +531,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 3 (own page) ===================== -->
+  <!-- DAY 3 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -571,7 +540,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 4 (own page) ===================== -->
+  <!-- DAY 4 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -580,7 +549,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 5 (own page) ===================== -->
+  <!-- DAY 5 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -589,7 +558,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 6 (own page) ===================== -->
+  <!-- DAY 6 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -598,7 +567,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 7 (own page) ===================== -->
+  <!-- DAY 7 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -607,7 +576,7 @@
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST (fresh page; ✅ columns on UL/OL) ===================== -->
+  <!-- ===================== SHOPPING LIST ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
