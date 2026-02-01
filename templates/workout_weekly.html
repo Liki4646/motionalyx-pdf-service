@@ -33,26 +33,21 @@
        GLOBAL TYPO SYSTEM
        ========================= */
     :root{
-      /* Body */
       --fs-body: 18px;
       --lh-body: 1.28;
 
-      /* Headings */
-      --fs-main: 22px;   /* glavni naslovi */
-      --fs-title: 19px;  /* naslovi */
-      --fs-sub: 16px;    /* podnaslovi */
+      --fs-main: 22px;
+      --fs-title: 19px;
+      --fs-sub: 16px;
 
-      /* Weights */
       --fw-main: 800;
       --fw-title: 800;
       --fw-sub: 700;
 
-      /* Spacing rhythm */
       --space-1: 8px;
       --space-2: 12px;
       --space-3: 16px;
 
-      /* Card styling */
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -78,7 +73,6 @@
       word-break: normal;
     }
 
-    /* Better pagination behavior */
     p, li{
       orphans: 3;
       widows: 3;
@@ -180,12 +174,8 @@
       padding: 14px 18px;
     }
 
-    /* Slightly tighter bubble for supplements to help fit more items */
     .bubble-block.supplements-bubble{
       padding: 12px 14px;
-    }
-    .bubble-block.supplements-bubble .section-subtitle{
-      margin-bottom: 10px;
     }
 
     .keep-together{
@@ -207,10 +197,6 @@
     li{
       margin: 0 0 6px 0;
       padding: 0;
-    }
-    ul ul, ol ol, ul ol, ol ul{
-      margin-top: 6px;
-      margin-bottom: 6px;
     }
 
     /* =========================
@@ -253,7 +239,6 @@
       font-size: 15px;
     }
 
-    /* Cover title stays larger */
     .cover-title{
       font-size: 30px;
       font-weight: 900;
@@ -269,16 +254,13 @@
       line-height: 1.25;
     }
 
-    /* Center the three bullet lines */
     .cover-bullets{
       margin: 8px 0 12px 0;
       font-size: 16px;
       line-height: 1.35;
       text-align: center;
     }
-    .cover-bullets div{
-      margin: 2px 0;
-    }
+    .cover-bullets div{ margin: 2px 0; }
 
     .cover-client-meta{
       margin-top: 8px;
@@ -318,7 +300,15 @@
     }
 
     /* =========================
-       WEEKLY SCHEDULE (more spacing between days)
+       WELCOME (more spacing)
+       ========================= */
+    .welcome-text{
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       WEEKLY SCHEDULE
        ========================= */
     .weekly-schedule-text{
       line-height: 1.6;
@@ -326,49 +316,55 @@
     }
 
     /* =========================
-       DAY CARDS (tighter)
+       DAY CARDS (slightly tighter)
        ========================= */
     .day-card{
       margin-top: 0;
       white-space: pre-line;
-      line-height: 1.22;
     }
-    .day-card ul, .day-card ol{
-      margin: 6px 0 8px 0;
+
+    .day-card-content{
+      line-height: 1.18;
+      white-space: pre-line;
+    }
+
+    .day-card-content ul, .day-card-content ol{
+      margin: 5px 0 8px 0;
       padding-left: 20px;
     }
-    .day-card li{
-      margin: 0 0 4px 0;
+    .day-card-content li{
+      margin: 0 0 3px 0;
+      line-height: 1.18;
     }
-    .day-card > :last-child{
+
+    .day-card-content > :last-child{
       margin-bottom: 0 !important;
     }
 
     /* =========================
-       COACHING TIPS (match progression spacing)
+       PROGRESSION (kept default, looks good)
+       ========================= */
+
+    /* =========================
+       COACHING TIPS
+       - add "enter" between tips via Liquid replace if supported
+       - fallback: bigger line-height
        ========================= */
     .tips-text{
-      white-space: pre-line;
-      line-height: 1.6; /* base for wrapped lines */
-    }
-    .tips-text ol, .tips-text ul{
-      margin: 6px 0 10px 0;
-      padding-left: 22px;
-    }
-    .tips-text li{
+      white-space: normal;
       line-height: 1.6;
-      margin: 0 0 10px 0; /* more spacing between tips (like progression feel) */
+    }
+    .tips-text br{
+      line-height: 1.6;
     }
 
     /* =========================
-       SUPPLEMENTS (fit up to 6 per page)
+       SUPPLEMENTS
+       - keep compact enough for more items per page
        ========================= */
     .supplements-text{
       white-space: pre-line;
-      line-height: 1.35; /* readable but compact */
-    }
-    .supplements-text p{
-      margin: 0 0 6px 0;
+      line-height: 1.25;
     }
     .supplements-text ul, .supplements-text ol{
       margin: 4px 0 8px 0;
@@ -376,7 +372,7 @@
     }
     .supplements-text li{
       margin: 0 0 4px 0;
-      line-height: 1.35;
+      line-height: 1.25;
     }
 
     /* =========================
@@ -388,10 +384,6 @@
     }
     .next-steps-list li{ margin-bottom: 6px; }
 
-    .next-steps-block{
-      white-space: pre-line;
-    }
-
     .disclaimer{
       margin-top: 10px;
       font-size: 14px;
@@ -400,11 +392,17 @@
       white-space: normal;
     }
 
-    .notes-lines{ margin-top: 10px; }
+    .notes-lines{
+      margin-top: 10px;
+      padding-top: 2px;
+    }
     .note-line{
+      display:block;
+      width:100%;
       border-bottom: 1px solid #d2d2d2;
-      height: 20px;
-      margin-bottom: 6px;
+      height: 22px;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
@@ -457,7 +455,7 @@
   <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">Welcome &amp; Overview</div>
-      <div class="card-block">{{welcome_block}}</div>
+      <div class="welcome-text">{{welcome_block}}</div>
     </div>
 
     <div class="bubble-block">
@@ -483,7 +481,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 1 Session</div>
-        {{workout_day1_block}}
+        <div class="day-card-content">{{workout_day1_block}}</div>
       </div>
     </div>
   </div>
@@ -494,7 +492,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 2 Session</div>
-        {{workout_day2_block}}
+        <div class="day-card-content">{{workout_day2_block}}</div>
       </div>
     </div>
   </div>
@@ -505,7 +503,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 3 Session</div>
-        {{workout_day3_block}}
+        <div class="day-card-content">{{workout_day3_block}}</div>
       </div>
     </div>
   </div>
@@ -516,7 +514,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 4 Session</div>
-        {{workout_day4_block}}
+        <div class="day-card-content">{{workout_day4_block}}</div>
       </div>
     </div>
   </div>
@@ -527,7 +525,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 5 Session</div>
-        {{workout_day5_block}}
+        <div class="day-card-content">{{workout_day5_block}}</div>
       </div>
     </div>
   </div>
@@ -538,7 +536,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 6 Session</div>
-        {{workout_day6_block}}
+        <div class="day-card-content">{{workout_day6_block}}</div>
       </div>
     </div>
   </div>
@@ -549,7 +547,7 @@
     <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 7 Session</div>
-        {{workout_day7_block}}
+        <div class="day-card-content">{{workout_day7_block}}</div>
       </div>
     </div>
   </div>
@@ -568,7 +566,8 @@
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Coaching Tips for Your Goal</div>
-      <div class="tips-text">{{tips_block}}</div>
+      <!-- If supported, this forces a blank line between each newline (often each tip) -->
+      <div class="tips-text">{{ tips_block | replace: "\n", "<br><br>" }}</div>
     </div>
   </div>
 
@@ -587,7 +586,7 @@
   <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">Next Steps &amp; Weekly Check-In</div>
-      <div class="next-steps-block">
+      <div class="card-block">
         <ul class="next-steps-list">
           <li>Follow this plan for the next 7 days.</li>
           <li>Pay attention to your energy, performance and recovery after each session.</li>
@@ -610,11 +609,32 @@
       <div class="section-subtitle">
         Use this space to write your reflections, wins, challenges and questions for your next check-in.
       </div>
+
       <div class="notes-lines">
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
       </div>
     </div>
   </div>
