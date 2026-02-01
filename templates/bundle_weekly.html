@@ -63,11 +63,16 @@
       background: transparent;
       font-size: var(--fs-body);
       line-height: var(--lh-body);
+      font-weight: 400;
     }
 
-    body, div, span, p, li, ul, ol, strong, em{
+    /* Keep only true emphasis bold */
+    strong, b { font-weight: 800; }
+
+    body, div, span, p, li, ul, ol, em{
       font-size: inherit;
       line-height: inherit;
+      font-weight: inherit;
     }
 
     p, li{
@@ -118,7 +123,7 @@
     }
 
     .cover-logo{
-      width: 150px;                 /* ✅ bigger logo */
+      width: 150px;
       margin: 0 auto 10px auto;
       display:block;
     }
@@ -157,6 +162,7 @@
       margin-bottom: 10px;
       line-height: 1.25;
       color:#222;
+      font-weight: 400;
     }
 
     .cover-bullets{
@@ -166,6 +172,7 @@
       font-size: 16px;
       line-height: 1.35;
       color:#111;
+      font-weight: 400;
     }
     .cover-bullets div{ margin: 4px 0; }
 
@@ -179,6 +186,7 @@
       padding: 12px 14px;
       line-height: 1.25;
       white-space: normal;
+      font-weight: 400;
     }
 
     .cover-goal-label{
@@ -196,6 +204,7 @@
       text-align:left;
       font-size: 16px;
       line-height: 1.25;
+      font-weight: 400;
     }
     .cover-client-meta div{ margin-bottom: 2px; }
 
@@ -205,6 +214,7 @@
       text-align:left;
       line-height: 1.25;
       font-style: italic;
+      font-weight: 400;
     }
     .cover-coach-name{ font-weight: 800; font-style: normal; }
 
@@ -218,6 +228,7 @@
       border: 1px dashed #b7e7d4;
       border-radius: 14px;
       padding: 12px 14px;
+      font-weight: 400;
     }
 
     .cover-footer{
@@ -226,6 +237,7 @@
       color:#444;
       font-size: 14px;
       line-height: 1.25;
+      font-weight: 400;
     }
 
     .cover-footer-brand{
@@ -241,6 +253,7 @@
       font-size: 12px;
       line-height: 1.25;
       color:#666;
+      font-weight: 400;
     }
 
     /* =========================
@@ -259,7 +272,7 @@
 
     .section-subtitle{
       font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
+      font-weight: 600;
       color:#555;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
@@ -282,6 +295,7 @@
       margin: 0 0 var(--space-1) 0;
       page-break-after: avoid;
       break-after: avoid;
+      font-weight: inherit;
     }
     h1, h2{
       font-size: var(--fs-title);
@@ -312,6 +326,8 @@
 
       page-break-inside: auto;
       break-inside: auto;
+
+      font-weight: 400; /* guard */
     }
 
     .bubble-block.bubble-wide{
@@ -331,10 +347,12 @@
     ul, ol{
       margin: 6px 0 10px 0;
       padding-left: 22px;
+      font-weight: 400;
     }
     li{
       margin: 0 0 6px 0;
       padding: 0;
+      font-weight: 400;
     }
 
     /* =========================
@@ -355,6 +373,7 @@
       margin: 0 0 12px 0;
       line-height: 1.25;
       white-space: normal;
+      font-weight: 400;
     }
 
     /* =========================
@@ -363,7 +382,8 @@
     .welcome-text{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.62; /* ✅ more premium air */
+      line-height: 1.62;
+      font-weight: 400;
     }
     .welcome-text p{ margin: 0 0 10px 0; }
     .welcome-text li{ margin: 0 0 8px 0; line-height: 1.62; }
@@ -372,6 +392,7 @@
       white-space: pre-line;
       margin: 0;
       line-height: 1.45;
+      font-weight: 400;
     }
 
     .macro-box{
@@ -381,19 +402,24 @@
       padding: 12px 14px;
       white-space: pre-line;
       line-height: 1.35;
+      font-weight: 400;
     }
 
-    /* MEAL DAYS (premium spacing) */
+    /* =========================
+       ✅ MEAL DAYS (MORE AIR UNDER 7-DAY MEAL PLAN)
+       ========================= */
     .day-content{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.22;
+      line-height: 1.55;          /* ✅ more spacing */
+      font-weight: 400;
     }
-    .day-content p{ margin: 0 0 8px 0; }
-    .day-content ul, .day-content ol{ margin-top: 6px; }
+    .day-content p{ margin: 0 0 10px 0; }
+    .day-content ul, .day-content ol{ margin-top: 8px; }
     .day-content li{
-      margin: 0 0 3px 0;
-      line-height: 1.16;
+      margin: 0 0 7px 0;          /* ✅ more spacing between lines */
+      line-height: 1.55;
+      font-weight: 400;
     }
     .day-content > :last-child{ margin-bottom: 0 !important; }
 
@@ -402,7 +428,7 @@
        ========================= */
     .shopping-note{
       font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
+      font-weight: 600;
       color:#555;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
@@ -420,6 +446,7 @@
 
       font-size: 16px;
       line-height: var(--shopping-line-height);
+      font-weight: 400;
 
       page-break-inside: avoid;
       break-inside: avoid;
@@ -441,6 +468,7 @@
       margin: 0;
       padding: 0;
       line-height: var(--shopping-line-height);
+      font-weight: 400;
     }
 
     .shopping-card ul,
@@ -460,6 +488,7 @@
       margin: 0 0 4px 0;
       padding: 0;
       line-height: var(--shopping-line-height);
+      font-weight: 400;
 
       page-break-inside: avoid;
       break-inside: avoid;
@@ -472,16 +501,19 @@
       white-space: pre-line;
       margin: 0;
       line-height: 1.65;
+      font-weight: 400;
     }
     .tips-text li{
       margin: 0 0 10px 0;
       line-height: 1.65;
+      font-weight: 400;
     }
 
     .supplements-text{
       white-space: pre-line;
       margin: 0;
       line-height: 1.25;
+      font-weight: 400;
     }
     .supplements-text p{ margin: 0 0 6px 0; }
     .supplements-text ul, .supplements-text ol{
@@ -491,6 +523,7 @@
     .supplements-text li{
       margin: 0 0 4px 0;
       line-height: 1.25;
+      font-weight: 400;
     }
 
     /* =========================
@@ -498,25 +531,35 @@
        ========================= */
     .training-welcome{
       white-space: pre-line;
-      line-height: 1.62; /* ✅ more premium air */
+      line-height: 1.62;
+      font-weight: 400; /* ✅ prevents “everything bold” from CSS side */
     }
-    .training-welcome p{ margin: 0 0 10px 0; }
-    .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; }
+    .training-welcome p{ margin: 0 0 10px 0; font-weight: 400; }
+    .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; font-weight: 400; }
+
+    .training-focus{
+      white-space: pre-line;
+      line-height: 1.28;
+      font-weight: 400;
+    }
+    .training-focus li{ font-weight: 400; }
 
     .weekly-schedule{
       white-space: pre-line;
-      line-height: 1.6;
+      line-height: 1.7;
+      font-weight: 400;
     }
-    .weekly-schedule li{ margin: 0 0 10px 0; }
+    .weekly-schedule li{ margin: 0 0 12px 0; font-weight: 400; }
 
     /* =========================
-       ✅ WORKOUT DAY SESSIONS (compact, max ~3/4 page)
+       WORKOUT DAY SESSIONS (compact, safe)
        ========================= */
     .session-bubble{
-      min-height: 0;                 /* ✅ NO stretching */
+      min-height: 0;
       padding: 14px 16px 16px 16px;
       page-break-inside: avoid;
       break-inside: avoid;
+      font-weight: 400;
     }
 
     .day-session-title{
@@ -532,8 +575,9 @@
 
     .session-content{
       white-space: pre-line;
-      font-size: 16px;              /* slightly smaller for sessions */
-      line-height: 1.08;            /* ✅ tighter rows */
+      font-size: 16px;
+      line-height: 1.08;
+      font-weight: 400;
     }
 
     .session-content p,
@@ -541,6 +585,7 @@
       margin: 0 0 3px 0;
       padding: 0;
       line-height: 1.08;
+      font-weight: 400;
     }
 
     .session-content p:empty,
@@ -553,15 +598,39 @@
       margin: 2px 0 5px 0;
       padding-left: 16px;
       line-height: 1.08;
+      font-weight: 400;
     }
 
     .session-content li{
       margin: 0 0 2px 0;
       padding: 0;
       line-height: 1.08;
+      font-weight: 400;
     }
 
     .session-content br + br{ display:none !important; }
+
+    /* =========================
+       ✅ COACHING TIPS (more air + ~3/4 page)
+       ========================= */
+    .coaching-tips-bubble{
+      min-height: 640px;            /* ✅ pushes to ~3/4 page */
+      padding: 18px 20px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .coaching-tips-text{
+      white-space: pre-line;
+      margin: 0;
+      line-height: 1.85;            /* ✅ more spacing */
+      font-weight: 400;
+      font-size: 17px;
+    }
+    .coaching-tips-text li{
+      margin: 0 0 12px 0;
+      line-height: 1.85;
+      font-weight: 400;
+    }
 
     /* =========================
        NEXT STEPS
@@ -569,8 +638,9 @@
     .next-steps-list{
       margin: 8px 0 0 0;
       padding-left: 22px;
+      font-weight: 400;
     }
-    .next-steps-list li{ margin-bottom: 6px; }
+    .next-steps-list li{ margin-bottom: 6px; font-weight: 400; }
 
     /* =========================
        NOTES (1:1 from workout_weekly)
@@ -678,7 +748,6 @@
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
       <div class="section-title">7-Day Meal Plan</div>
-      <!-- ✅ removed subtitle to save space -->
     </div>
 
     <div class="bubble-block keep-together">
@@ -741,7 +810,8 @@
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST ===================== -->
+  <!-- ===================== ✅ SHOPPING LIST (ALWAYS NEW PAGE) ===================== -->
+  <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
       <div class="section-title">Shopping List</div>
@@ -812,9 +882,13 @@
     <div class="bubble-block">
       <div class="section-title">Your Training Focus</div>
       <div class="section-subtitle">How your week is structured and what we are prioritising.</div>
-      {{training_framework_block}}
+      <div class="training-focus">{{training_framework_block}}</div>
     </div>
+  </div>
 
+  <!-- ===================== ✅ WEEKLY WORKOUT SCHEDULE (NEW PAGE) ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
@@ -894,12 +968,12 @@
     </div>
   </div>
 
-  <!-- ===================== COACHING TIPS ===================== -->
+  <!-- ===================== ✅ COACHING TIPS (MORE AIR + 3/4 PAGE) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
-    <div class="bubble-block bubble-wide">
+    <div class="bubble-block bubble-wide coaching-tips-bubble">
       <div class="section-title">Coaching Tips for Your Goal</div>
-      <div class="tips-text">{{workout_tips_block}}</div>
+      <div class="coaching-tips-text">{{workout_tips_block}}</div>
     </div>
   </div>
 
