@@ -30,7 +30,7 @@
     }
 
     /* =========================
-       TYPO + SYSTEM TOKENS
+       GLOBAL TYPO SYSTEM
        ========================= */
     :root{
       --fs-body: 18px;
@@ -51,14 +51,6 @@
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
-
-      /* Shopping compactness */
-      --shopping-line-height: 1.12;
-
-      /* ✅ Meal day spacing (more air) */
-      --meal-day-line-height: 1.56;
-      --meal-day-li-gap: 10px;
-      --meal-day-section-gap: 14px;
     }
 
     body{
@@ -83,32 +75,28 @@
 
     .page-break{ page-break-before: always; }
 
-    /* =========================
-       GLOBAL: KEEP TOGETHER
-       ========================= */
+    /* Keep inside page */
     .keep-together{
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
     /* =========================
-       LAYOUT WRAPPERS
+       WRAPPERS
        ========================= */
-    .content-wrapper, .content-wrapper-wide{
+    .content-wrapper{
+      padding: 16px 10px 20px 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .content-wrapper-wide{
+      padding: 12px 2px 18px 2px;
       position: relative;
       z-index: 1;
     }
 
-    .content-wrapper{
-      padding: 16px 10px 20px 10px;
-    }
-
-    .content-wrapper-wide{
-      padding: 12px 2px 18px 2px;
-    }
-
     /* =========================
-       CONSISTENT HEADINGS
+       TITLES
        ========================= */
     .section-title{
       font-size: var(--fs-main);
@@ -142,39 +130,16 @@
       break-after: avoid;
     }
 
-    /* Optional helpers for injected HTML content */
-    h1, h2, h3, h4{
-      margin: 0 0 var(--space-1) 0;
-      page-break-after: avoid;
-      break-after: avoid;
-    }
-    h1, h2{
-      font-size: var(--fs-title);
-      font-weight: var(--fw-title);
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
-      line-height: 1.15;
-    }
-    h3, h4{
-      font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
-      color:#333;
-      letter-spacing: 0.3px;
-      line-height: 1.2;
-    }
-
     /* =========================
-       BUBBLE / CARD
+       CARDS / BUBBLES
        ========================= */
     .bubble-block{
       background:#fff;
       border-radius: var(--card-radius);
       border: var(--card-border);
       padding: 14px 16px;
-      white-space: pre-line;
       box-shadow: var(--card-shadow);
       margin-bottom: var(--space-3);
-
       page-break-inside: auto;
       break-inside: auto;
     }
@@ -185,18 +150,12 @@
       padding: 14px 18px;
     }
 
-    .card-block{
-      margin-top: 0;
-      white-space: pre-line;
-    }
-
     /* =========================
        COVER PAGE
        ========================= */
     .cover-page{
       position: relative;
       min-height: 100vh;
-      padding: 0;
       z-index: 1;
     }
 
@@ -223,12 +182,11 @@
 
     .cover-title{
       text-align: center;
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 900;
       letter-spacing: 0.8px;
       margin-bottom: 10px;
-      line-height: 1.05;
-      text-transform: none;
+      line-height: 1.02;
     }
 
     .cover-subtitle{
@@ -324,47 +282,70 @@
     }
 
     /* =========================
-       WELCOME / MACROS / HOW IT WORKS
+       PART INTRO KICKERS
        ========================= */
-    .welcome-text, .macro-text, .how-it-works-text{
-      white-space: pre-line;
+    .part-kicker{
+      font-size: 14px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color:#199c6c;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+    .part-subkicker{
+      font-size: 15px;
+      color:#555;
+      margin: 0 0 12px 0;
+      line-height: 1.25;
+      white-space: normal;
     }
 
     /* =========================
-       MEAL DAY CONTENT
+       MEAL: WELCOME / HOW IT WORKS
+       ========================= */
+    .welcome-text{
+      white-space: pre-line;
+      margin: 0;
+      line-height: 1.62;
+    }
+    .welcome-text p{ margin: 0 0 10px 0; }
+    .welcome-text li{ margin: 0 0 8px 0; line-height: 1.62; }
+
+    .how-it-works-text{
+      white-space: pre-line;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .macro-box{
+      background: #f7fbf9;
+      border: 1px solid #d7f2e7;
+      border-radius: 10px;
+      padding: 12px 14px;
+      white-space: pre-line;
+      line-height: 1.35;
+    }
+
+    /* =========================
+       MEAL: DAY CONTENT
        ========================= */
     .day-content{
       white-space: pre-line;
-      line-height: var(--meal-day-line-height);
+      margin: 0;
+      line-height: 1.22;
     }
-
-    .day-content p{
-      margin: 0 0 10px 0;
-      line-height: var(--meal-day-line-height);
-    }
-
+    .day-content p{ margin: 0 0 8px 0; }
     .day-content ul, .day-content ol{
-      margin: 10px 0 12px 0;
+      margin: 8px 0 10px 0;
       padding-left: 20px;
     }
-
-    .day-content li{
-      margin: 0 0 var(--meal-day-li-gap) 0;
-      line-height: var(--meal-day-line-height);
-    }
-
-    .day-content strong{
-      display: inline-block;
-      margin-top: var(--meal-day-section-gap);
-    }
+    .day-content li{ margin: 0 0 8px 0; line-height: 1.22; }
 
     /* =========================
        SHOPPING LIST
        ========================= */
-    .shopping-section{
-      padding-top: 8px;
-    }
-
+    .shopping-section{ padding-top: 6px; }
     .shopping-note{
       font-size: 13px;
       color:#333;
@@ -381,9 +362,6 @@
       box-shadow: var(--card-shadow);
       white-space: pre-line;
 
-      font-size: 16px;
-      line-height: var(--shopping-line-height);
-
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -399,18 +377,10 @@
       break-after: avoid;
     }
 
-    .shopping-card p,
-    .shopping-card div{
-      margin: 0;
-      padding: 0;
-      line-height: var(--shopping-line-height);
-    }
-
     .shopping-card ul,
     .shopping-card ol{
       margin: 2px 0 0 0;
       padding-left: 18px;
-      line-height: var(--shopping-line-height);
 
       column-count: 2;
       column-gap: 18px;
@@ -420,50 +390,42 @@
     }
 
     .shopping-card li{
-      margin: 0 0 4px 0;
-      padding: 0;
-      line-height: var(--shopping-line-height);
-
+      margin: 0 0 5px 0;
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
     /* =========================
-       TIPS / SUPPLEMENTS
+       MEAL: TIPS / SUPPS
        ========================= */
     .tips-text{
       white-space: pre-line;
-      line-height: 1.34;
-      font-size: 17px;
+      margin: 0;
+      line-height: 1.65;
     }
 
     .supplements-text{
       white-space: pre-line;
-      line-height: 1.34;
-      font-size: 17px;
+      margin: 0;
+      line-height: 1.25;
     }
 
     /* =========================
-       TRAINING: FRAMEWORK / SCHEDULE / PROGRESSION
+       TRAINING: WELCOME / SCHEDULE
        ========================= */
-    .weekly-schedule-text{
+    .training-welcome{
       white-space: pre-line;
-      line-height: 1.3;
+      line-height: 1.62;
     }
 
-    .progression-text{
+    .weekly-schedule{
       white-space: pre-line;
-      line-height: 1.3;
+      line-height: 1.45;
     }
 
     /* =========================
-       TRAINING: DAY CARDS
+       TRAINING: SESSION DAY BUBBLES
        ========================= */
-    .day-card{
-      margin-top: 0;
-      white-space: pre-line;
-    }
-
     .day-card-title{
       font-size: var(--fs-title);
       font-weight: var(--fw-title);
@@ -475,22 +437,17 @@
       break-after: avoid;
     }
 
-    .day-card-content{
-      line-height: 1.16;
+    .session-bubble{
+      min-height: 0;                 /* ✅ KEY: removes forced full-page stretching */
+      padding: 14px 16px 16px 16px;  /* slightly tighter */
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .session-content{
       white-space: pre-line;
-    }
-
-    .day-card-content ul, .day-card-content ol{
-      margin: 5px 0 8px 0;
-      padding-left: 20px;
-    }
-    .day-card-content li{
-      margin: 0 0 3px 0;
-      line-height: 1.16;
-    }
-
-    .day-card-content > :last-child{
-      margin-bottom: 0 !important;
+      font-size: 16px;              /* ✅ small downshift only for sessions */
+      line-height: 1.08;            /* ✅ tighter rows */
     }
 
     /* =========================
@@ -504,9 +461,7 @@
     }
     .next-steps-list li{ margin: 0 0 6px 0; }
 
-    .notes-lines{
-      margin-top: 18px;
-    }
+    .notes-lines{ margin-top: 18px; }
     .note-line{
       height: 22px;
       border-bottom: 1px solid rgba(0,0,0,0.18);
@@ -522,18 +477,21 @@
   <div class="cover-page">
     <div class="cover-inner">
       <img class="cover-logo"
-        src="https://cdn.shopify.com/s/files/1/0737/8799/8346/files/ChatGPT_Image_Nov_17_2025_at_08_23_18_PM.png?v=1763748019"
         alt="Motionalyx"
+        src="https://cdn.shopify.com/s/files/1/0737/8799/8346/files/ChatGPT_Image_Nov_17_2025_at_08_23_18_PM.png?v=1763748019"
       />
 
       <div class="cover-badge">Motionalyx · Progress made personal.</div>
-      <div class="cover-title">Weekly Bundle Plan Update</div>
-      <div class="cover-subtitle">Your updated 7-day nutrition + training plan based on your latest check-in.</div>
+      <div class="cover-title">MEAL &amp; WORKOUT<br/>BUNDLE</div>
+
+      <div class="cover-subtitle">
+        Your integrated 7-day nutrition + training plan built around your goals, lifestyle and schedule.
+      </div>
 
       <div class="cover-bullets">
-        <div>• Nutrition + training in one simple weekly structure</div>
-        <div>• Familiar plan with smart adjustments</div>
-        <div>• Clear steps you can follow and repeat</div>
+        <div>• Personalized meal plan with macro targets + shopping list</div>
+        <div>• Structured weekly training with clear day-by-day sessions</div>
+        <div>• Coaching tips + optional supplement guidance</div>
       </div>
 
       <div class="cover-goal-box">
@@ -543,13 +501,11 @@
 
       <div class="cover-client-meta">
         <div><strong>Client:</strong> {{client_name}}</div>
-        <div><strong>Week starting:</strong> {{ plan_date | date: "%B %d, %Y" }}</div>
-        <div><strong>Plan:</strong> {{plan_type}}</div>
+        <div><strong>Start date:</strong> {{plan_date}}</div>
       </div>
 
       <div class="cover-coach-signature">
-        Updated by <span class="cover-coach-name">Coach {{coach_nutrition}}</span> (Nutrition) &amp;
-        <span class="cover-coach-name">Coach {{coach_training}}</span> (Training)
+        Updated by <span class="cover-coach-name">Coach {{coach_nutrition}}</span> &amp; <span class="cover-coach-name">Coach {{coach_training}}</span>
       </div>
 
       <div class="cover-instructions">
@@ -568,33 +524,39 @@
     </div>
   </div>
 
-  <!-- ===================== WELCOME / MACROS / HOW IT WORKS ===================== -->
+  <!-- ===================== PART 1: NUTRITION ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+
+    <div class="bubble-block keep-together">
+      <div class="part-kicker">Part 1 · Nutrition</div>
+      <div class="part-subkicker">Meal plan · Macro targets · Shopping list · Tips · Supplements</div>
+
       <div class="section-title">Welcome &amp; Overview</div>
-      <div class="section-subtitle">Your updated weekly bundle overview.</div>
       <div class="welcome-text">{{meal_welcome_block}}</div>
     </div>
 
     <div class="bubble-block">
       <div class="section-title">Your Calorie &amp; Macro Targets</div>
-      <div class="section-subtitle">Your weekly nutrition targets (adjusted based on your check-in).</div>
-      <div class="macro-text">{{macros_block}}</div>
+      <div class="section-subtitle">These targets support your goals and lifestyle.</div>
+      <div class="macro-box">{{macros_block}}</div>
     </div>
+  </div>
 
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">How Your Plan Works</div>
       <div class="how-it-works-text">{{how_it_works_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== MEAL PLAN: HEADER + DAY 1 (same page) ===================== -->
+  <!-- ===================== MEAL PLAN: HEADER + DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
       <div class="section-title">7-Day Meal Plan</div>
-      <div class="section-subtitle">Breakfast · Lunch · Dinner · Snack</div>
     </div>
 
     <div class="bubble-block keep-together">
@@ -603,7 +565,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 2 ===================== -->
+  <!-- DAY 2 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -612,7 +574,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 3 ===================== -->
+  <!-- DAY 3 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -621,7 +583,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 4 ===================== -->
+  <!-- DAY 4 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -630,7 +592,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 5 ===================== -->
+  <!-- DAY 5 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -639,7 +601,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 6 ===================== -->
+  <!-- DAY 6 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -648,7 +610,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAY 7 ===================== -->
+  <!-- DAY 7 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -695,7 +657,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAILY TIPS ===================== -->
+  <!-- ===================== DAILY TIPS (MEAL) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
@@ -704,119 +666,132 @@
     </div>
   </div>
 
-  <!-- ===================== SUPPLEMENTS (NUTRITION) ===================== -->
+  <!-- ===================== SUPPLEMENTS (MEAL) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Motionalyx Supplement Recommendations</div>
+      <div class="section-subtitle">Optional boosters on top of solid nutrition.</div>
       <div class="supplements-text">{{meal_supplements_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== TRAINING: FRAMEWORK ===================== -->
+  <!-- ===================== PART 2: TRAINING ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="section-title">Your Training Framework</div>
-      <div class="section-subtitle">The structure and intent behind your training week.</div>
-      <div class="weekly-schedule-text">{{training_framework_block}}</div>
+      <div class="part-kicker">Part 2 · Training</div>
+      <div class="part-subkicker">Weekly structure · Day-by-day sessions · Progression · Tips · Supplements</div>
+
+      <div class="section-title">Your Training Focus</div>
+      <div class="section-subtitle">How your weekly training is structured and what we are prioritising.</div>
+      {{training_framework_block}}
     </div>
   </div>
 
-  <!-- ===================== TRAINING: WEEKLY SCHEDULE ===================== -->
+  <!-- ===================== WORKOUT WELCOME + SCHEDULE ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
+    <div class="bubble-block">
+      <div class="section-title">Welcome &amp; Overview</div>
+      <div class="training-welcome">{{workout_welcome_block}}</div>
+    </div>
+
     <div class="bubble-block">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
-      <div class="weekly-schedule-text">{{weekly_schedule_block}}</div>
+      <div class="weekly-schedule">{{weekly_schedule_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== TRAINING: PROGRESSION STRATEGY ===================== -->
+  <!-- ===================== DAY 1 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 1 Session</div>
+      <div class="session-content">{{workout_day1_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 2 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 2 Session</div>
+      <div class="session-content">{{workout_day2_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 3 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 3 Session</div>
+      <div class="session-content">{{workout_day3_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 4 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 4 Session</div>
+      <div class="session-content">{{workout_day4_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 5 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 5 Session</div>
+      <div class="session-content">{{workout_day5_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 6 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 6 Session</div>
+      <div class="session-content">{{workout_day6_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== DAY 7 ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block session-bubble">
+      <div class="day-card-title">Day 7 Session</div>
+      <div class="session-content">{{workout_day7_block}}</div>
+    </div>
+  </div>
+
+  <!-- ===================== WEEKLY PROGRESSION ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">Weekly Progression Strategy</div>
-      <div class="section-subtitle">How to progress this week without burning out.</div>
-      <div class="progression-text">{{progression_block}}</div>
+      {{progression_block}}
     </div>
   </div>
 
-  <!-- ===================== WORKOUT DAY 1 ===================== -->
+  <!-- ===================== TIPS (WORKOUT) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 1 Session</div>
-        <div class="day-card-content">{{workout_day1_block}}</div>
-      </div>
+      <div class="section-title">Coaching Tips for Your Goal</div>
+      {{workout_tips_block}}
     </div>
   </div>
 
-  <!-- ===================== WORKOUT DAY 2 ===================== -->
+  <!-- ===================== SUPPLEMENTS (WORKOUT) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 2 Session</div>
-        <div class="day-card-content">{{workout_day2_block}}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================== WORKOUT DAY 3 ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
-    <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 3 Session</div>
-        <div class="day-card-content">{{workout_day3_block}}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================== WORKOUT DAY 4 ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
-    <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 4 Session</div>
-        <div class="day-card-content">{{workout_day4_block}}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================== WORKOUT DAY 5 ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
-    <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 5 Session</div>
-        <div class="day-card-content">{{workout_day5_block}}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================== WORKOUT DAY 6 ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
-    <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 6 Session</div>
-        <div class="day-card-content">{{workout_day6_block}}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================== WORKOUT DAY 7 ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
-    <div class="bubble-block">
-      <div class="day-card">
-        <div class="day-card-title">Day 7 Session</div>
-        <div class="day-card-content">{{workout_day7_block}}</div>
-      </div>
+      <div class="section-title">Supplement Suggestions</div>
+      <div class="section-subtitle">Optional additions based on your goal + training load.</div>
+      {{workout_supplements_block}}
     </div>
   </div>
 
@@ -824,24 +799,17 @@
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="section-title">Next Steps &amp; Weekly Check-In</div>
-      <div class="card-block">
-        <ul class="next-steps-list">
-          <li>Follow this plan for the next 7 days.</li>
-          <li>Stick to the macro targets and keep meals simple + repeatable.</li>
-          <li>Pay attention to energy, performance and recovery after each session.</li>
-          <li>Note any meals/exercises that feel great (or need adjustments).</li>
-          <li>You will receive your weekly check-in link by email.</li>
-          <li>Your next plan will be updated based on your feedback.</li>
-        </ul>
-        <div class="disclaimer">
-          <strong>Important:</strong> This plan provides general guidance only and is not a medical prescription.
-        </div>
-      </div>
+      <div class="section-title">Next Steps</div>
+      <ul class="next-steps-list">
+        <li>Follow your meal plan and hit your macro targets consistently for the next 7 days.</li>
+        <li>Complete the day-by-day training sessions and track your performance (weights, reps, RPE).</li>
+        <li>Prioritise 7–9 hours of sleep and hydration daily.</li>
+        <li>At the end of the week, complete your check-in so we can adjust the next plan.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- ===================== NOTES ===================== -->
+  <!-- ===================== NOTES (1:1 from workout_weekly) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
