@@ -36,9 +36,9 @@
       --fs-body: 18px;
       --lh-body: 1.28;
 
-      --fs-main: 22px;   /* main section headings */
-      --fs-title: 19px;  /* card titles (Day 1, Proteins, etc.) */
-      --fs-sub: 16px;    /* subtitles */
+      --fs-main: 22px;
+      --fs-title: 19px;
+      --fs-sub: 16px;
 
       --fw-main: 800;
       --fw-title: 800;
@@ -175,7 +175,7 @@
     }
 
     /* =========================
-       LISTS
+       LISTS (base)
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -348,7 +348,8 @@
     }
 
     /* =========================
-       SHOPPING LIST (two columns like before)
+       ✅ SHOPPING LIST (MATCH OLD WORKING COLUMN BEHAVIOR)
+       - columns applied to UL/OL directly (works in your renderer)
        ========================= */
     .shopping-note{
       font-size: var(--fs-sub);
@@ -358,26 +359,66 @@
       line-height: 1.25;
     }
 
-    .shopping-two-col{
-      column-count: 2;
-      column-gap: 26px;
+    .shopping-card{
+      background:#ffffff;
+      border-radius: var(--card-radius);
+      border: var(--card-border);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--card-shadow);
       white-space: pre-line;
-      line-height: 1.25;
+
+      /* slightly tighter to fit, like your old template */
+      font-size: 16px;
+      line-height: 1.12;
+
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
-    .shopping-two-col ul,
-    .shopping-two-col ol{
+
+    .shopping-card-title{
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+      line-height: 1.15;
+    }
+
+    /* Tighten any text nodes */
+    .shopping-card p,
+    .shopping-card div{
       margin: 0;
+      padding: 0;
+      line-height: 1.12;
+    }
+
+    /* ✅ The key part: columns on list itself */
+    .shopping-card ul,
+    .shopping-card ol{
+      margin: 2px 0 4px 0;
       padding-left: 18px;
+      line-height: 1.12;
+
+      column-count: 2;
+      column-gap: 18px;
+
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
-    .shopping-two-col li{
+
+    .shopping-card li{
       margin: 0 0 4px 0;
-      line-height: 1.25;
-      break-inside: avoid;
+      padding: 0;
+      line-height: 1.12;
+
       page-break-inside: avoid;
+      break-inside: avoid;
     }
-    .shopping-two-col > *{
-      break-inside: avoid;
-      page-break-inside: avoid;
+
+    .shopping-card.one-col ul,
+    .shopping-card.one-col ol{
+      column-count: 1;
     }
 
     /* =========================
@@ -428,7 +469,6 @@
   <!-- ===================== COVER PAGE ===================== -->
   <div class="cover-page">
     <div class="cover-inner">
-      <!-- LOGO ADDED -->
       <img class="cover-logo"
         src="https://cdn.shopify.com/s/files/1/0737/8799/8346/files/ChatGPT_Image_Nov_17_2025_at_08_23_18_PM.png?v=1763748019"
         alt="Motionalyx"
@@ -567,7 +607,7 @@
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST (fresh page; 2-column per block) ===================== -->
+  <!-- ===================== SHOPPING LIST (fresh page; ✅ columns on UL/OL) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -575,34 +615,34 @@
       <div class="shopping-note">Quantities approximate for one person.</div>
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Proteins</div>
-      <div class="shopping-two-col">{{shopping_proteins_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Proteins</div>
+      {{shopping_proteins_block}}
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Carbohydrates &amp; Whole Grains</div>
-      <div class="shopping-two-col">{{shopping_carbs_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Carbohydrates &amp; Whole Grains</div>
+      {{shopping_carbs_block}}
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Fruits &amp; Vegetables</div>
-      <div class="shopping-two-col">{{shopping_fruit_veg_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Fruits &amp; Vegetables</div>
+      {{shopping_fruit_veg_block}}
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Healthy Fats &amp; Oils</div>
-      <div class="shopping-two-col">{{shopping_fats_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Healthy Fats &amp; Oils</div>
+      {{shopping_fats_block}}
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Dairy or Plant Alternatives</div>
-      <div class="shopping-two-col">{{shopping_dairy_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Dairy or Plant Alternatives</div>
+      {{shopping_dairy_block}}
     </div>
 
-    <div class="bubble-block">
-      <div class="card-title">Extras &amp; Condiments</div>
-      <div class="shopping-two-col">{{shopping_extras_block}}</div>
+    <div class="shopping-card">
+      <div class="shopping-card-title">Extras &amp; Condiments</div>
+      {{shopping_extras_block}}
     </div>
   </div>
 
