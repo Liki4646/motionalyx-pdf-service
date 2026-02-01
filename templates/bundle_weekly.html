@@ -537,15 +537,40 @@
     .training-welcome p{ margin: 0 0 10px 0; font-weight: 400; }
     .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; font-weight: 400; }
 
-    /* ✅ tighter spacing for YOUR TRAINING FOCUS */
+    /* ✅ SHORTER / SAFER: keep on ONE page via 2 columns + tighter spacing */
+    .focus-bubble{
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
     .training-focus{
       white-space: pre-line;
-      line-height: 1.18;
+      font-weight: 400;
+
+      font-size: 16px;      /* slightly smaller so it never becomes huge */
+      line-height: 1.12;    /* tighter, but still readable */
+
+      column-count: 2;      /* KEY: reduces height so it doesn't spill to page 2 */
+      column-gap: 18px;
+      column-fill: auto;
+    }
+    .training-focus p{
+      margin: 0 0 6px 0;
+      line-height: 1.12;
       font-weight: 400;
     }
-    .training-focus p{ margin: 0 0 6px 0; font-weight: 400; line-height: 1.18; }
-    .training-focus ul, .training-focus ol{ margin: 6px 0 8px 0; }
-    .training-focus li{ margin: 0 0 4px 0; font-weight: 400; line-height: 1.18; }
+    .training-focus ul, .training-focus ol{
+      margin: 6px 0 8px 0;
+      padding-left: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .training-focus li{
+      margin: 0 0 4px 0;
+      line-height: 1.12;
+      font-weight: 400;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
 
     .weekly-schedule{
       white-space: pre-line;
@@ -856,7 +881,7 @@
     </div>
   </div>
 
-  <!-- ===================== ✅ DAILY LIFESTYLE TIPS (FIXED VAR NAME) ===================== -->
+  <!-- ===================== DAILY LIFESTYLE TIPS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
@@ -865,7 +890,7 @@
     </div>
   </div>
 
-  <!-- ===================== ✅ MEAL SUPPLEMENTS (FIXED VAR NAME) ===================== -->
+  <!-- ===================== MEAL SUPPLEMENTS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
@@ -886,7 +911,8 @@
       <div class="training-welcome">{{workout_welcome_block}}</div>
     </div>
 
-    <div class="bubble-block">
+    <!-- ✅ SAFE: should not spill to 2 pages -->
+    <div class="bubble-block focus-bubble keep-together">
       <div class="section-title">Your Training Focus</div>
       <div class="section-subtitle">How your week is structured and what we are prioritising.</div>
       <div class="training-focus">{{training_framework_block}}</div>
