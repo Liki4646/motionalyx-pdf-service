@@ -304,7 +304,7 @@
        ========================= */
     .welcome-text{
       white-space: pre-line;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     /* =========================
@@ -324,7 +324,7 @@
     }
 
     .day-card-content{
-      line-height: 1.18;
+      line-height: 1.16;
       white-space: pre-line;
     }
 
@@ -334,7 +334,7 @@
     }
     .day-card-content li{
       margin: 0 0 3px 0;
-      line-height: 1.18;
+      line-height: 1.16;
     }
 
     .day-card-content > :last-child{
@@ -342,25 +342,29 @@
     }
 
     /* =========================
-       PROGRESSION (kept default, looks good)
-       ========================= */
-
-    /* =========================
-       COACHING TIPS
-       - add "enter" between tips via Liquid replace if supported
-       - fallback: bigger line-height
+       COACHING TIPS (no replace logic; just more spacing)
        ========================= */
     .tips-text{
-      white-space: normal;
-      line-height: 1.6;
+      white-space: pre-line;
+      line-height: 1.78; /* increased spacing between wrapped lines */
     }
-    .tips-text br{
-      line-height: 1.6;
+    .tips-text p{
+      margin: 0 0 12px 0;
+    }
+    .tips-text ul, .tips-text ol{
+      margin: 6px 0 10px 0;
+      padding-left: 22px;
+    }
+    .tips-text li{
+      margin: 0 0 12px 0; /* more space between tips */
+      line-height: 1.78;
+    }
+    .tips-text > :last-child{
+      margin-bottom: 0 !important;
     }
 
     /* =========================
-       SUPPLEMENTS
-       - keep compact enough for more items per page
+       SUPPLEMENTS (compact enough to fit more items)
        ========================= */
     .supplements-text{
       white-space: pre-line;
@@ -566,8 +570,7 @@
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Coaching Tips for Your Goal</div>
-      <!-- If supported, this forces a blank line between each newline (often each tip) -->
-      <div class="tips-text">{{ tips_block | replace: "\n", "<br><br>" }}</div>
+      <div class="tips-text">{{tips_block}}</div>
     </div>
   </div>
 
@@ -611,14 +614,6 @@
       </div>
 
       <div class="notes-lines">
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
         <div class="note-line"></div>
         <div class="note-line"></div>
         <div class="note-line"></div>
