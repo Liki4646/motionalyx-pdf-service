@@ -6,6 +6,9 @@
   <style>
     * { box-sizing: border-box; }
 
+    /* =========================
+       PAGE / FOOTER
+       ========================= */
     @page{
       margin: 18px 16px;
       @bottom-center{
@@ -15,6 +18,7 @@
       }
     }
 
+    /* GLOBAL BACKGROUND */
     .page-bg{
       position: fixed;
       top:0; left:0; right:0; bottom:0;
@@ -25,6 +29,9 @@
       z-index:-1;
     }
 
+    /* =========================
+       GLOBAL TYPO SYSTEM
+       ========================= */
     :root{
       --fs-body: 18px;
       --lh-body: 1.28;
@@ -44,6 +51,9 @@
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+      /* shopping compactness */
+      --shopping-line-height: 1.12;
     }
 
     body{
@@ -68,6 +78,9 @@
 
     .page-break{ page-break-before: always; }
 
+    /* =========================
+       WRAPPERS
+       ========================= */
     .cover-page, .content-wrapper, .content-wrapper-wide{
       position: relative;
       z-index: 1;
@@ -81,6 +94,9 @@
       padding: 12px 2px 18px 2px;
     }
 
+    /* =========================
+       CONSISTENT HEADINGS
+       ========================= */
     .section-title{
       font-size: var(--fs-main);
       font-weight: var(--fw-main);
@@ -113,6 +129,7 @@
       break-after: avoid;
     }
 
+    /* Optional helpers for injected HTML */
     h1, h2, h3, h4{
       margin: 0 0 var(--space-1) 0;
       page-break-after: avoid;
@@ -133,6 +150,9 @@
       line-height: 1.2;
     }
 
+    /* =========================
+       BUBBLE / CARD
+       ========================= */
     .bubble-block{
       background:#fff;
       border-radius: var(--card-radius);
@@ -157,6 +177,9 @@
       break-inside: avoid;
     }
 
+    /* =========================
+       LISTS (base)
+       ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
       padding-left: 22px;
@@ -167,7 +190,7 @@
     }
 
     /* =========================
-       COVER
+       COVER PAGE
        ========================= */
     .cover-page{
       min-height: 100vh;
@@ -288,7 +311,7 @@
     }
 
     /* =========================
-       CONTENT TEXT
+       TEXT BLOCKS
        ========================= */
     .welcome-text{
       white-space: pre-line;
@@ -322,11 +345,13 @@
     }
 
     /* =========================
-       ✅ SHOPPING LIST (FIXED)
-       - DO NOT force keep-together on the entire card
-       - columns on UL/OL
-       - avoid breaks only per-item
+       ✅ SHOPPING LIST (AUTO MOVE TO NEXT PAGE IF NOT ENOUGH SPACE)
+       - cards flow together in one section
+       - card itself cannot split
+       - if card doesn't fit, renderer moves it to next page
        ========================= */
+    .shopping-section{ page-break-before: always; }
+
     .shopping-note{
       font-size: var(--fs-sub);
       font-weight: var(--fw-sub);
@@ -345,11 +370,11 @@
       white-space: pre-line;
 
       font-size: 16px;
-      line-height: 1.12;
+      line-height: var(--shopping-line-height);
 
-      /* ✅ IMPORTANT: allow the card to break if it is long */
-      page-break-inside: auto;
-      break-inside: auto;
+      /* ✅ key rule */
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
 
     .shopping-card-title{
@@ -367,27 +392,27 @@
     .shopping-card div{
       margin: 0;
       padding: 0;
-      line-height: 1.12;
+      line-height: var(--shopping-line-height);
     }
 
+    /* ✅ two columns on the list itself (this is what your renderer likes) */
     .shopping-card ul,
     .shopping-card ol{
-      margin: 2px 0 4px 0;
+      margin: 2px 0 0 0;
       padding-left: 18px;
-      line-height: 1.12;
+      line-height: var(--shopping-line-height);
 
       column-count: 2;
       column-gap: 18px;
 
-      page-break-inside: auto;
-      break-inside: auto;
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
 
-    /* ✅ Prevent single list items splitting */
     .shopping-card li{
       margin: 0 0 4px 0;
       padding: 0;
-      line-height: 1.12;
+      line-height: var(--shopping-line-height);
 
       page-break-inside: avoid;
       break-inside: avoid;
@@ -576,9 +601,8 @@
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
+  <!-- ===================== SHOPPING LIST (cards flow together, auto move if needed) ===================== -->
+  <div class="content-wrapper shopping-section">
     <div class="bubble-block keep-together">
       <div class="section-title">Shopping List</div>
       <div class="shopping-note">Quantities approximate for one person.</div>
