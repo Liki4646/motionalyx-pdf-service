@@ -52,7 +52,6 @@
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
 
-      /* shopping compactness */
       --shopping-line-height: 1.12;
     }
 
@@ -121,7 +120,7 @@
     }
 
     .cover-logo{
-      width: 150px;           /* ✅ bigger logo */
+      width: 150px;
       margin: 0 auto 10px auto;
       display:block;
     }
@@ -154,7 +153,7 @@
 
     .cover-bullets{
       margin: 10px auto 8px auto;
-      text-align:center;       /* ✅ centered bullets */
+      text-align:center;
       max-width: 640px;
       font-size: 16px;
       line-height: 1.35;
@@ -241,7 +240,7 @@
        ========================= */
     .section-title{
       font-size: var(--fs-main);
-      font-weight: var(--fw-main);
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 0 0 var(--space-1) 0;
@@ -252,7 +251,7 @@
 
     .section-subtitle{
       font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
+      font-weight: 700;
       color:#444;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
@@ -262,7 +261,7 @@
 
     .card-title{
       font-size: var(--fs-title);
-      font-weight: var(--fw-title);
+      font-weight: 800;
       text-transform: uppercase;
       margin: 0 0 var(--space-2) 0;
       letter-spacing: 0.9px;
@@ -279,14 +278,14 @@
     }
     h1, h2{
       font-size: var(--fs-title);
-      font-weight: var(--fw-title);
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.9px;
       line-height: 1.15;
     }
     h3, h4{
       font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
+      font-weight: 700;
       color:#333;
       letter-spacing: 0.3px;
       line-height: 1.2;
@@ -303,7 +302,6 @@
       white-space: pre-line;
       box-shadow: var(--card-shadow);
       margin-bottom: var(--space-3);
-
       page-break-inside: auto;
       break-inside: auto;
     }
@@ -334,7 +332,7 @@
     .welcome-text{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.62;       /* ✅ more airy */
+      line-height: 1.62;
     }
     .welcome-text p{ margin: 0 0 10px 0; }
     .welcome-text li{ margin: 0 0 8px 0; line-height: 1.62; }
@@ -371,10 +369,7 @@
     .day-content > :last-child{ margin-bottom: 0 !important; }
 
     /* =========================
-       ✅ SHOPPING LIST
-       - force it to start on its own page (fix header-alone issue)
-       - cards flow together
-       - card cannot split; if it doesn't fit, it moves to next page
+       SHOPPING LIST
        ========================= */
     .shopping-card{
       background:#ffffff;
@@ -384,10 +379,8 @@
       margin-bottom: 16px;
       box-shadow: var(--card-shadow);
       white-space: pre-line;
-
       font-size: 16px;
       line-height: var(--shopping-line-height);
-
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -405,18 +398,11 @@
 
     .shopping-note{
       font-size: var(--fs-sub);
-      font-weight: var(--fw-sub);
+      font-weight: 700;
       color:#555;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
       white-space: normal;
-    }
-
-    .shopping-card p,
-    .shopping-card div{
-      margin: 0;
-      padding: 0;
-      line-height: var(--shopping-line-height);
     }
 
     .shopping-card ul,
@@ -424,10 +410,8 @@
       margin: 2px 0 0 0;
       padding-left: 18px;
       line-height: var(--shopping-line-height);
-
       column-count: 2;
       column-gap: 18px;
-
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -436,7 +420,6 @@
       margin: 0 0 4px 0;
       padding: 0;
       line-height: var(--shopping-line-height);
-
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -459,22 +442,13 @@
       margin: 0;
       line-height: 1.25;
     }
-    .supplements-text p{ margin: 0 0 6px 0; }
-    .supplements-text ul, .supplements-text ol{
-      margin: 4px 0 8px 0;
-      padding-left: 18px;
-    }
-    .supplements-text li{
-      margin: 0 0 4px 0;
-      line-height: 1.25;
-    }
 
     /* =========================
        TRAINING: WELCOME / SCHEDULE / SESSIONS
        ========================= */
     .training-welcome{
       white-space: pre-line;
-      line-height: 1.62;       /* ✅ more airy */
+      line-height: 1.62;
     }
     .training-welcome p{ margin: 0 0 10px 0; }
     .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; }
@@ -483,34 +457,53 @@
       white-space: pre-line;
       line-height: 1.45;
     }
-    .weekly-schedule li{ margin: 0 0 10px 0; } /* ✅ more spacing between day rows */
+    .weekly-schedule li{ margin: 0 0 10px 0; }
 
-    /* make session bubbles feel premium and ~3/4 page */
+    /* ✅ SESSION BUBBLES: ~3/4 page target, not full-page stretched */
     .session-bubble{
-      min-height: 74vh;                 /* ✅ 3/4 page feel */
+      min-height: 62vh;               /* ✅ was too tall; now ~3/4 page feel */
+      padding: 16px 18px 18px 18px;   /* slightly more premium padding */
       page-break-inside: avoid;
       break-inside: avoid;
     }
-    .session-content{
-      white-space: pre-line;
-      line-height: 1.42;                /* ✅ not cramped */
-    }
-    .session-content p{ margin: 0 0 10px 0; }
-    .session-content li{ margin: 0 0 8px 0; line-height: 1.42; }
 
     .day-card-title{
       font-size: var(--fs-title);
-      font-weight: var(--fw-title);
+      font-weight: 800;
       text-transform: uppercase;
-      margin: 0 0 14px 0;
+      margin: 0 0 12px 0;             /* premium but not huge */
       letter-spacing: 0.9px;
       line-height: 1.15;
       page-break-after: avoid;
       break-after: avoid;
     }
 
+    .session-content{
+      white-space: pre-line;
+      line-height: 1.36;              /* balanced readability */
+    }
+
+    .session-content p,
+    .session-content div{
+      margin: 0 0 8px 0;
+    }
+
+    .session-content ul,
+    .session-content ol{
+      margin: 6px 0 10px 0;
+      padding-left: 18px;
+    }
+
+    .session-content li{
+      margin: 0 0 6px 0;
+      line-height: 1.36;
+    }
+
+    /* Remove double blank lines from generated content */
+    .session-content br + br{ display:none !important; }
+
     /* =========================
-       NEXT STEPS
+       NEXT STEPS / NOTES
        ========================= */
     .next-steps-list{
       margin: 8px 0 0 0;
@@ -518,9 +511,6 @@
     }
     .next-steps-list li{ margin: 0 0 8px 0; }
 
-    /* =========================
-       NOTES (same as workout_first)
-       ========================= */
     .notes-lines{ margin-top: 10px; }
     .note-line{
       border-bottom: 1px solid #d2d2d2;
@@ -563,14 +553,12 @@
 
       <div class="cover-badge">Motionalyx · Progress made personal.</div>
 
-      <!-- ✅ title requested -->
       <div class="cover-title">MEAL &amp; WORKOUT<br/>BUNDLE</div>
 
       <div class="cover-subtitle">
         Your integrated 7-day nutrition + training plan built around your goals, lifestyle and schedule.
       </div>
 
-      <!-- ✅ centered bullets -->
       <div class="cover-bullets">
         <div>• Personalized meal plan with macro targets + shopping list</div>
         <div>• Structured weekly training with clear day-by-day sessions</div>
@@ -584,7 +572,6 @@
 
       <div class="cover-client-meta">
         <div><strong>Client:</strong> {{client_name}}</div>
-        <!-- ✅ same date formatting style as meal/workout -->
         <div><strong>Start date:</strong> {{ plan_date | date: "%B %d, %Y" }}</div>
       </div>
 
@@ -641,7 +628,6 @@
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
       <div class="section-title">7-Day Meal Plan</div>
-      <!-- ✅ removed subtitle to save space -->
     </div>
 
     <div class="bubble-block keep-together">
@@ -704,7 +690,7 @@
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST (force new page so header never sits alone) ===================== -->
+  <!-- ===================== SHOPPING LIST ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -762,7 +748,7 @@
     </div>
   </div>
 
-  <!-- ===================== PART 2: TRAINING (merge PART 2 with training focus) ===================== -->
+  <!-- ===================== PART 2: TRAINING ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -895,7 +881,7 @@
     </div>
   </div>
 
-  <!-- ===================== NOTES (same style as workout_first) ===================== -->
+  <!-- ===================== NOTES ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
