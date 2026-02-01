@@ -327,7 +327,7 @@
       page-break-inside: auto;
       break-inside: auto;
 
-      font-weight: 400; /* guard */
+      font-weight: 400;
     }
 
     .bubble-block.bubble-wide{
@@ -406,19 +406,19 @@
     }
 
     /* =========================
-       ✅ MEAL DAYS (MORE AIR UNDER 7-DAY MEAL PLAN)
+       ✅ MEAL DAYS (MORE AIR)
        ========================= */
     .day-content{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.55;          /* ✅ more spacing */
+      line-height: 1.68;          /* ✅ increased */
       font-weight: 400;
     }
-    .day-content p{ margin: 0 0 10px 0; }
-    .day-content ul, .day-content ol{ margin-top: 8px; }
+    .day-content p{ margin: 0 0 12px 0; }
+    .day-content ul, .day-content ol{ margin-top: 10px; }
     .day-content li{
-      margin: 0 0 7px 0;          /* ✅ more spacing between lines */
-      line-height: 1.55;
+      margin: 0 0 9px 0;          /* ✅ more spacing */
+      line-height: 1.68;
       font-weight: 400;
     }
     .day-content > :last-child{ margin-bottom: 0 !important; }
@@ -527,22 +527,23 @@
     }
 
     /* =========================
-       TRAINING: WELCOME / SCHEDULE
+       TRAINING: WELCOME / FOCUS / SCHEDULE
        ========================= */
     .training-welcome{
       white-space: pre-line;
       line-height: 1.62;
-      font-weight: 400; /* ✅ prevents “everything bold” from CSS side */
+      font-weight: 400;
     }
     .training-welcome p{ margin: 0 0 10px 0; font-weight: 400; }
     .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; font-weight: 400; }
 
     .training-focus{
       white-space: pre-line;
-      line-height: 1.28;
+      line-height: 1.32;
       font-weight: 400;
     }
-    .training-focus li{ font-weight: 400; }
+    .training-focus p{ margin: 0 0 8px 0; font-weight: 400; }
+    .training-focus li{ margin: 0 0 6px 0; font-weight: 400; }
 
     .weekly-schedule{
       white-space: pre-line;
@@ -611,10 +612,10 @@
     .session-content br + br{ display:none !important; }
 
     /* =========================
-       ✅ COACHING TIPS (more air + ~3/4 page)
+       ✅ COACHING TIPS (space goes into lines, not bottom)
        ========================= */
     .coaching-tips-bubble{
-      min-height: 640px;            /* ✅ pushes to ~3/4 page */
+      min-height: 0;                 /* ✅ remove forced blank bottom */
       padding: 18px 20px;
       page-break-inside: avoid;
       break-inside: avoid;
@@ -622,15 +623,20 @@
     .coaching-tips-text{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.85;            /* ✅ more spacing */
       font-weight: 400;
       font-size: 17px;
+
+      line-height: 2.05;             /* ✅ more spacing BETWEEN lines */
     }
+    .coaching-tips-text p{ margin: 0 0 12px 0; }
+    .coaching-tips-text ul,
+    .coaching-tips-text ol{ margin: 10px 0 12px 0; padding-left: 22px; }
     .coaching-tips-text li{
-      margin: 0 0 12px 0;
-      line-height: 1.85;
+      margin: 0 0 14px 0;
+      line-height: 2.05;
       font-weight: 400;
     }
+    .coaching-tips-text > :last-child{ margin-bottom: 0 !important; }
 
     /* =========================
        NEXT STEPS
@@ -810,7 +816,7 @@
     </div>
   </div>
 
-  <!-- ===================== ✅ SHOPPING LIST (ALWAYS NEW PAGE) ===================== -->
+  <!-- ===================== SHOPPING LIST (ALWAYS NEW PAGE) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block keep-together">
@@ -886,7 +892,7 @@
     </div>
   </div>
 
-  <!-- ===================== ✅ WEEKLY WORKOUT SCHEDULE (NEW PAGE) ===================== -->
+  <!-- ===================== WEEKLY WORKOUT SCHEDULE (NEW PAGE) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -968,7 +974,7 @@
     </div>
   </div>
 
-  <!-- ===================== ✅ COACHING TIPS (MORE AIR + 3/4 PAGE) ===================== -->
+  <!-- ===================== COACHING TIPS (FIXED) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide coaching-tips-bubble">
