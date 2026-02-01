@@ -36,9 +36,9 @@
       --fs-body: 18px;
       --lh-body: 1.28;
 
-      --fs-main: 22px;   /* main section headings */
-      --fs-title: 19px;  /* card titles (Day X, Proteins, etc.) */
-      --fs-sub: 16px;    /* subtitles */
+      --fs-main: 22px;
+      --fs-title: 19px;
+      --fs-sub: 16px;
 
       --fw-main: 800;
       --fw-title: 800;
@@ -52,8 +52,13 @@
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
 
+      /* Shopping compactness */
       --shopping-line-height: 1.12;
-      --meal-day-line-height: 1.16;
+
+      /* ✅ Day card spacing (MORE AIR) */
+      --meal-day-line-height: 1.56;
+      --meal-day-li-gap: 10px;
+      --meal-day-section-gap: 14px;
     }
 
     body{
@@ -315,7 +320,7 @@
     }
 
     /* =========================
-       PAGE 2: WELCOME / MACROS
+       PAGE 2: WELCOME / MACROS / HOW IT WORKS
        ========================= */
     .welcome-text{
       white-space: pre-line;
@@ -327,38 +332,42 @@
       line-height: 1.35;
     }
 
-    /* =========================
-       HOW IT WORKS
-       ========================= */
     .how-it-works-text{
       white-space: pre-line;
       line-height: 1.45;
     }
 
     /* =========================
-       MEAL DAYS
+       MEAL DAYS (MORE AIR)
        ========================= */
     .day-content{
       white-space: pre-line;
       line-height: var(--meal-day-line-height);
     }
-    .day-content ul, .day-content ol{
-      margin: 5px 0 8px 0;
-      padding-left: 20px;
-    }
-    .day-content li{
-      margin: 0 0 3px 0;
+
+    .day-content p{
+      margin: 0 0 10px 0;
       line-height: var(--meal-day-line-height);
     }
-    .day-content > :last-child{
-      margin-bottom: 0 !important;
+
+    .day-content ul, .day-content ol{
+      margin: 10px 0 12px 0;
+      padding-left: 20px;
+    }
+
+    .day-content li{
+      margin: 0 0 var(--meal-day-li-gap) 0;
+      line-height: var(--meal-day-line-height);
+    }
+
+    /* extra separation between sections when text uses bold labels */
+    .day-content strong{
+      display: inline-block;
+      margin-top: var(--meal-day-section-gap);
     }
 
     /* =========================
        SHOPPING LIST
-       - all cards flow together
-       - card never splits; if it doesn't fit remaining space it moves to next page
-       - 2 columns on UL/OL (works with your renderer)
        ========================= */
     .shopping-section{ page-break-before: always; }
 
@@ -518,7 +527,7 @@
     </div>
   </div>
 
-  <!-- ===================== PAGE 2: WELCOME + MACROS ===================== -->
+  <!-- ===================== PAGE 2: WELCOME + MACROS + HOW IT WORKS (NO PAGE BREAK) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -531,11 +540,7 @@
       <div class="section-subtitle">These targets support your goals and lifestyle.</div>
       <div class="macro-box">{{macro_block}}</div>
     </div>
-  </div>
 
-  <!-- ===================== PAGE 3: HOW IT WORKS (own page) ===================== -->
-  <div class="page-break"></div>
-  <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">How Your Plan Works</div>
       <div class="section-subtitle">A simple structure you can repeat and adjust.</div>
@@ -551,67 +556,67 @@
       <div class="section-subtitle">Breakfast · Lunch · Dinner · Snack</div>
     </div>
 
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 1</div>
       <div class="day-content">{{meal_day1_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 2 (own page) ===================== -->
+  <!-- ===================== DAY 2 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 2</div>
       <div class="day-content">{{meal_day2_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 3 (own page) ===================== -->
+  <!-- ===================== DAY 3 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 3</div>
       <div class="day-content">{{meal_day3_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 4 (own page) ===================== -->
+  <!-- ===================== DAY 4 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 4</div>
       <div class="day-content">{{meal_day4_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 5 (own page) ===================== -->
+  <!-- ===================== DAY 5 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 5</div>
       <div class="day-content">{{meal_day5_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 6 (own page) ===================== -->
+  <!-- ===================== DAY 6 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 6</div>
       <div class="day-content">{{meal_day6_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== DAY 7 (own page) ===================== -->
+  <!-- ===================== DAY 7 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block keep-together">
       <div class="card-title">Day 7</div>
       <div class="day-content">{{meal_day7_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== SHOPPING LIST (same logic as first) ===================== -->
+  <!-- ===================== SHOPPING LIST ===================== -->
   <div class="content-wrapper shopping-section">
     <div class="bubble-block keep-together">
       <div class="section-title">Shopping List</div>
@@ -649,7 +654,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAILY TIPS (WIDE) ===================== -->
+  <!-- ===================== DAILY TIPS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
@@ -658,7 +663,7 @@
     </div>
   </div>
 
-  <!-- ===================== SUPPLEMENTS (WIDE) ===================== -->
+  <!-- ===================== SUPPLEMENTS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
