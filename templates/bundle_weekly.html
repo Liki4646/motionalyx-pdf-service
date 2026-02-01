@@ -353,18 +353,21 @@
     }
 
     /* =========================
-       MEAL: DAY CONTENT
+       ✅ MEAL: DAY CONTENT (MORE AIR)
        ========================= */
     .day-content{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.22;
+      line-height: 1.55; /* ↑ bigger line spacing */
     }
-    .day-content p{ margin: 0 0 8px 0; }
-    .day-content ul, .day-content ol{ margin-top: 6px; }
+    .day-content p{ margin: 0 0 10px 0; line-height: 1.55; }
+    .day-content ul, .day-content ol{
+      margin: 10px 0 12px 0;
+      padding-left: 20px;
+    }
     .day-content li{
-      margin: 0 0 3px 0;
-      line-height: 1.16;
+      margin: 0 0 10px 0; /* ↑ more space between items */
+      line-height: 1.55;
     }
     .day-content > :last-child{ margin-bottom: 0 !important; }
 
@@ -430,18 +433,26 @@
     }
 
     /* =========================
-       MEAL: TIPS / SUPPLEMENTS
+       ✅ DAILY LIFESTYLE TIPS (TIGHTER)
        ========================= */
     .tips-text{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.65;
+      line-height: 1.28; /* ↓ tighter */
+    }
+    .tips-text p{ margin: 0 0 6px 0; line-height: 1.28; }
+    .tips-text ul, .tips-text ol{
+      margin: 6px 0 8px 0;
+      padding-left: 18px;
     }
     .tips-text li{
-      margin: 0 0 10px 0;
-      line-height: 1.65;
+      margin: 0 0 6px 0; /* ↓ tighter */
+      line-height: 1.28;
     }
 
+    /* =========================
+       MEAL: SUPPLEMENTS
+       ========================= */
     .supplements-text{
       white-space: pre-line;
       margin: 0;
@@ -473,9 +484,6 @@
     }
     .weekly-schedule li{ margin: 0 0 10px 0; }
 
-    /* =========================
-       ✅ SESSION BUBBLES
-       ========================= */
     .session-bubble{
       min-height: 0;
       padding: 14px 16px 16px 16px;
@@ -526,6 +534,28 @@
     }
 
     .session-content br + br{ display:none !important; }
+
+    /* =========================
+       ✅ COACHING TIPS FOR YOUR GOAL (MORE AIR)
+       ========================= */
+    .coaching-tips-text{
+      white-space: pre-line;
+      line-height: 1.85;   /* ↑ strongly bigger */
+      font-size: 18px;     /* keep premium readability */
+    }
+    .coaching-tips-text p{
+      margin: 0 0 14px 0;  /* ↑ more vertical rhythm */
+      line-height: 1.85;
+    }
+    .coaching-tips-text ul,
+    .coaching-tips-text ol{
+      margin: 12px 0 14px 0;
+      padding-left: 20px;
+    }
+    .coaching-tips-text li{
+      margin: 0 0 14px 0;  /* ↑ more space between tips */
+      line-height: 1.85;
+    }
 
     /* =========================
        NEXT STEPS
@@ -762,7 +792,7 @@
     </div>
   </div>
 
-  <!-- ===================== DAILY TIPS (MEAL) ===================== -->
+  <!-- ===================== DAILY LIFESTYLE TIPS (MEAL) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
@@ -881,12 +911,12 @@
     </div>
   </div>
 
-  <!-- ===================== TIPS (WORKOUT) ===================== -->
+  <!-- ===================== COACHING TIPS (WORKOUT) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
       <div class="section-title">Coaching Tips for Your Goal</div>
-      {{workout_tips_block}}
+      <div class="coaching-tips-text">{{workout_tips_block}}</div>
     </div>
   </div>
 
@@ -924,22 +954,10 @@
       </div>
 
       <div class="notes-lines">
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
-        <div class="note-line"></div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
       </div>
     </div>
   </div>
