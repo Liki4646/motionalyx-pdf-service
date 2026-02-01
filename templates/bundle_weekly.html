@@ -406,18 +406,18 @@
     }
 
     /* =========================
-       ✅ MEAL DAYS (MORE AIR)
+       MEAL DAYS (AIR)
        ========================= */
     .day-content{
       white-space: pre-line;
       margin: 0;
-      line-height: 1.68;          /* ✅ increased */
+      line-height: 1.68;
       font-weight: 400;
     }
     .day-content p{ margin: 0 0 12px 0; }
     .day-content ul, .day-content ol{ margin-top: 10px; }
     .day-content li{
-      margin: 0 0 9px 0;          /* ✅ more spacing */
+      margin: 0 0 9px 0;
       line-height: 1.68;
       font-weight: 400;
     }
@@ -537,13 +537,15 @@
     .training-welcome p{ margin: 0 0 10px 0; font-weight: 400; }
     .training-welcome li{ margin: 0 0 8px 0; line-height: 1.62; font-weight: 400; }
 
+    /* ✅ tighter spacing for YOUR TRAINING FOCUS */
     .training-focus{
       white-space: pre-line;
-      line-height: 1.32;
+      line-height: 1.18;
       font-weight: 400;
     }
-    .training-focus p{ margin: 0 0 8px 0; font-weight: 400; }
-    .training-focus li{ margin: 0 0 6px 0; font-weight: 400; }
+    .training-focus p{ margin: 0 0 6px 0; font-weight: 400; line-height: 1.18; }
+    .training-focus ul, .training-focus ol{ margin: 6px 0 8px 0; }
+    .training-focus li{ margin: 0 0 4px 0; font-weight: 400; line-height: 1.18; }
 
     .weekly-schedule{
       white-space: pre-line;
@@ -612,10 +614,10 @@
     .session-content br + br{ display:none !important; }
 
     /* =========================
-       ✅ COACHING TIPS (space goes into lines, not bottom)
+       COACHING TIPS (space goes into lines)
        ========================= */
     .coaching-tips-bubble{
-      min-height: 0;                 /* ✅ remove forced blank bottom */
+      min-height: 0;
       padding: 18px 20px;
       page-break-inside: avoid;
       break-inside: avoid;
@@ -625,8 +627,7 @@
       margin: 0;
       font-weight: 400;
       font-size: 17px;
-
-      line-height: 2.05;             /* ✅ more spacing BETWEEN lines */
+      line-height: 2.05;
     }
     .coaching-tips-text p{ margin: 0 0 12px 0; }
     .coaching-tips-text ul,
@@ -649,7 +650,7 @@
     .next-steps-list li{ margin-bottom: 6px; font-weight: 400; }
 
     /* =========================
-       NOTES (1:1 from workout_weekly)
+       NOTES (1:1 workout_weekly)
        ========================= */
     .notes-lines{
       margin-top: 10px;
@@ -855,22 +856,22 @@
     </div>
   </div>
 
-  <!-- ===================== MEAL TIPS ===================== -->
+  <!-- ===================== ✅ DAILY LIFESTYLE TIPS (FIXED VAR NAME) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Daily Lifestyle Tips</div>
-      <div class="tips-text">{{meal_tips_block}}</div>
+      <div class="tips-text">{{tips_block}}</div>
     </div>
   </div>
 
-  <!-- ===================== MEAL SUPPLEMENTS ===================== -->
+  <!-- ===================== ✅ MEAL SUPPLEMENTS (FIXED VAR NAME) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Motionalyx Supplement Recommendations</div>
       <div class="section-subtitle">Optional support on top of consistent nutrition.</div>
-      <div class="supplements-text">{{meal_supplements_block}}</div>
+      <div class="supplements-text">{{supplements_block}}</div>
     </div>
   </div>
 
@@ -902,7 +903,7 @@
     </div>
   </div>
 
-  <!-- ===================== WORKOUT: DAY 1 ===================== -->
+  <!-- ===================== WORKOUT: DAYS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -911,7 +912,6 @@
     </div>
   </div>
 
-  <!-- DAY 2 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -920,7 +920,6 @@
     </div>
   </div>
 
-  <!-- DAY 3 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -929,7 +928,6 @@
     </div>
   </div>
 
-  <!-- DAY 4 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -938,7 +936,6 @@
     </div>
   </div>
 
-  <!-- DAY 5 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -947,7 +944,6 @@
     </div>
   </div>
 
-  <!-- DAY 6 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -956,7 +952,6 @@
     </div>
   </div>
 
-  <!-- DAY 7 -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block session-bubble">
@@ -974,7 +969,7 @@
     </div>
   </div>
 
-  <!-- ===================== COACHING TIPS (FIXED) ===================== -->
+  <!-- ===================== COACHING TIPS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide coaching-tips-bubble">
@@ -1011,7 +1006,7 @@
     </div>
   </div>
 
-  <!-- ===================== NOTES (1:1 workout_weekly) ===================== -->
+  <!-- ===================== NOTES ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
