@@ -180,6 +180,14 @@
       padding: 14px 18px;
     }
 
+    /* Slightly tighter bubble for supplements to help fit more items */
+    .bubble-block.supplements-bubble{
+      padding: 12px 14px;
+    }
+    .bubble-block.supplements-bubble .section-subtitle{
+      margin-bottom: 10px;
+    }
+
     .keep-together{
       page-break-inside: avoid;
       break-inside: avoid;
@@ -190,7 +198,7 @@
     }
 
     /* =========================
-       LISTS (premium + compact)
+       LISTS (base)
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -261,7 +269,7 @@
       line-height: 1.25;
     }
 
-    /* Center the three bullet lines (as requested) */
+    /* Center the three bullet lines */
     .cover-bullets{
       margin: 8px 0 12px 0;
       font-size: 16px;
@@ -313,19 +321,18 @@
        WEEKLY SCHEDULE (more spacing between days)
        ========================= */
     .weekly-schedule-text{
-      line-height: 1.6;          /* more vertical breathing room */
+      line-height: 1.6;
       white-space: pre-line;
     }
 
     /* =========================
-       DAY CARDS (tighter + remove extra tail feel)
+       DAY CARDS (tighter)
        ========================= */
     .day-card{
       margin-top: 0;
       white-space: pre-line;
-      line-height: 1.22;         /* slightly tighter than global */
+      line-height: 1.22;
     }
-    /* Tighter lists only inside day cards */
     .day-card ul, .day-card ol{
       margin: 6px 0 8px 0;
       padding-left: 20px;
@@ -333,17 +340,43 @@
     .day-card li{
       margin: 0 0 4px 0;
     }
-    /* Avoid extra spacing at the very end of the day block */
     .day-card > :last-child{
       margin-bottom: 0 !important;
     }
 
     /* =========================
-       COACHING TIPS (more spacing)
+       COACHING TIPS (match progression spacing)
        ========================= */
     .tips-text{
-      line-height: 1.6;
       white-space: pre-line;
+      line-height: 1.6; /* base for wrapped lines */
+    }
+    .tips-text ol, .tips-text ul{
+      margin: 6px 0 10px 0;
+      padding-left: 22px;
+    }
+    .tips-text li{
+      line-height: 1.6;
+      margin: 0 0 10px 0; /* more spacing between tips (like progression feel) */
+    }
+
+    /* =========================
+       SUPPLEMENTS (fit up to 6 per page)
+       ========================= */
+    .supplements-text{
+      white-space: pre-line;
+      line-height: 1.35; /* readable but compact */
+    }
+    .supplements-text p{
+      margin: 0 0 6px 0;
+    }
+    .supplements-text ul, .supplements-text ol{
+      margin: 4px 0 8px 0;
+      padding-left: 18px;
+    }
+    .supplements-text li{
+      margin: 0 0 4px 0;
+      line-height: 1.35;
     }
 
     /* =========================
@@ -542,10 +575,10 @@
   <!-- ===================== SUPPLEMENTS (WIDE) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper-wide">
-    <div class="bubble-block bubble-wide">
+    <div class="bubble-block bubble-wide supplements-bubble">
       <div class="section-title">Motionalyx Supplement Recommendations</div>
       <div class="section-subtitle">Optional support on top of consistent training, sleep and nutrition.</div>
-      <div class="card-block">{{supplements_block}}</div>
+      <div class="supplements-text">{{supplements_block}}</div>
     </div>
   </div>
 
