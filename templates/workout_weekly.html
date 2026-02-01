@@ -99,7 +99,7 @@
     }
 
     .content-wrapper-wide{
-      padding: 12px 2px 18px 2px; /* less side padding */
+      padding: 12px 2px 18px 2px;
     }
 
     /* =========================
@@ -159,33 +159,7 @@
     }
 
     /* =========================
-       EYEBROW + MAIN TITLE (kept but made consistent)
-       ========================= */
-    .eyebrow{
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color:#199c6c;
-      font-weight: 800;
-      margin-bottom: var(--space-1);
-      line-height: 1.2;
-    }
-
-    /* Make "main-title" consistent with main headings */
-    .main-title{
-      font-size: var(--fs-main);
-      font-weight: var(--fw-main);
-      letter-spacing: 1px;
-      margin: 0 0 var(--space-2) 0;
-      text-transform: uppercase;
-      line-height: 1.15;
-      page-break-after: avoid;
-      break-after: avoid;
-    }
-
-    /* =========================
        BUBBLE / CARD
-       - allow splitting to reduce empty space
        ========================= */
     .bubble-block{
       background:#fff;
@@ -200,14 +174,12 @@
       break-inside: auto;
     }
 
-    /* Wide bubble variant (kept) */
     .bubble-block.bubble-wide{
       margin-left: 0;
       margin-right: 0;
       padding: 14px 18px;
     }
 
-    /* Keep together only when it truly matters */
     .keep-together{
       page-break-inside: avoid;
       break-inside: avoid;
@@ -289,13 +261,16 @@
       line-height: 1.25;
     }
 
+    /* Center the three bullet lines (as requested) */
     .cover-bullets{
-      margin-bottom: 10px;
+      margin: 8px 0 12px 0;
       font-size: 16px;
-      line-height: 1.25;
-      text-align: left;
+      line-height: 1.35;
+      text-align: center;
     }
-    .cover-bullets div{ margin-bottom: 2px; }
+    .cover-bullets div{
+      margin: 2px 0;
+    }
 
     .cover-client-meta{
       margin-top: 8px;
@@ -335,10 +310,39 @@
     }
 
     /* =========================
-       DAY CARD
+       WEEKLY SCHEDULE (more spacing between days)
+       ========================= */
+    .weekly-schedule-text{
+      line-height: 1.6;          /* more vertical breathing room */
+      white-space: pre-line;
+    }
+
+    /* =========================
+       DAY CARDS (tighter + remove extra tail feel)
        ========================= */
     .day-card{
-      margin-top: 8px;
+      margin-top: 0;
+      white-space: pre-line;
+      line-height: 1.22;         /* slightly tighter than global */
+    }
+    /* Tighter lists only inside day cards */
+    .day-card ul, .day-card ol{
+      margin: 6px 0 8px 0;
+      padding-left: 20px;
+    }
+    .day-card li{
+      margin: 0 0 4px 0;
+    }
+    /* Avoid extra spacing at the very end of the day block */
+    .day-card > :last-child{
+      margin-bottom: 0 !important;
+    }
+
+    /* =========================
+       COACHING TIPS (more spacing)
+       ========================= */
+    .tips-text{
+      line-height: 1.6;
       white-space: pre-line;
     }
 
@@ -395,7 +399,7 @@
 
       <div class="cover-client-meta">
         <div><strong>Client:</strong> {{client_name}}</div>
-        <div><strong>Week starting:</strong> {{plan_date}}</div>
+        <div><strong>Week starting:</strong> {{ plan_date | date: "%B %d, %Y" }}</div>
       </div>
 
       <div class="cover-coach-signature">
@@ -415,13 +419,10 @@
     </div>
   </div>
 
-  <!-- ===================== PAGE 2 – WELCOME + FRAMEWORK + SCHEDULE ===================== -->
+  <!-- ===================== PAGE 2 – WELCOME + FRAMEWORK ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
-      <div class="eyebrow">Motionalyx</div>
-      <div class="main-title">Your Training Blueprint</div>
-
       <div class="section-title">Welcome &amp; Overview</div>
       <div class="card-block">{{welcome_block}}</div>
     </div>
@@ -431,11 +432,15 @@
       <div class="section-subtitle">How your week is structured and what we are prioritising.</div>
       <div class="card-block">{{training_framework_block}}</div>
     </div>
+  </div>
 
-    <div class="bubble-block">
+  <!-- ===================== PAGE 3 – WEEKLY WORKOUT SCHEDULE (own page) ===================== -->
+  <div class="page-break"></div>
+  <div class="content-wrapper">
+    <div class="bubble-block keep-together">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
-      <div class="card-block">{{weekly_schedule_block}}</div>
+      <div class="weekly-schedule-text">{{weekly_schedule_block}}</div>
     </div>
   </div>
 
@@ -530,7 +535,7 @@
   <div class="content-wrapper-wide">
     <div class="bubble-block bubble-wide">
       <div class="section-title">Coaching Tips for Your Goal</div>
-      <div class="card-block">{{tips_block}}</div>
+      <div class="tips-text">{{tips_block}}</div>
     </div>
   </div>
 
