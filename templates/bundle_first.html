@@ -236,11 +236,11 @@
     }
 
     /* =========================
-       HEADINGS / SECTION TITLES
+       HEADINGS
        ========================= */
     .section-title{
       font-size: var(--fs-main);
-      font-weight: 800;
+      font-weight: var(--fw-main);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 0 0 var(--space-1) 0;
@@ -251,7 +251,7 @@
 
     .section-subtitle{
       font-size: var(--fs-sub);
-      font-weight: 700;
+      font-weight: var(--fw-sub);
       color:#444;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
@@ -261,7 +261,7 @@
 
     .card-title{
       font-size: var(--fs-title);
-      font-weight: 800;
+      font-weight: var(--fw-title);
       text-transform: uppercase;
       margin: 0 0 var(--space-2) 0;
       letter-spacing: 0.9px;
@@ -270,7 +270,6 @@
       break-after: avoid;
     }
 
-    /* Optional helpers for injected HTML */
     h1, h2, h3, h4{
       margin: 0 0 var(--space-1) 0;
       page-break-after: avoid;
@@ -278,14 +277,14 @@
     }
     h1, h2{
       font-size: var(--fs-title);
-      font-weight: 800;
+      font-weight: var(--fw-title);
       text-transform: uppercase;
       letter-spacing: 0.9px;
       line-height: 1.15;
     }
     h3, h4{
       font-size: var(--fs-sub);
-      font-weight: 700;
+      font-weight: var(--fw-sub);
       color:#333;
       letter-spacing: 0.3px;
       line-height: 1.2;
@@ -302,6 +301,7 @@
       white-space: pre-line;
       box-shadow: var(--card-shadow);
       margin-bottom: var(--space-3);
+
       page-break-inside: auto;
       break-inside: auto;
     }
@@ -321,7 +321,7 @@
        LISTS (base)
        ========================= */
     ul, ol{
-      margin: 6px 0 0 0;
+      margin: 6px 0 10px 0;
       padding-left: 18px;
     }
     li{ margin: 0 0 6px 0; }
@@ -379,8 +379,10 @@
       margin-bottom: 16px;
       box-shadow: var(--card-shadow);
       white-space: pre-line;
+
       font-size: 16px;
       line-height: var(--shopping-line-height);
+
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -398,7 +400,7 @@
 
     .shopping-note{
       font-size: var(--fs-sub);
-      font-weight: 700;
+      font-weight: var(--fw-sub);
       color:#555;
       margin: 0 0 var(--space-2) 0;
       line-height: 1.25;
@@ -410,8 +412,10 @@
       margin: 2px 0 0 0;
       padding-left: 18px;
       line-height: var(--shopping-line-height);
+
       column-count: 2;
       column-gap: 18px;
+
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -420,6 +424,7 @@
       margin: 0 0 4px 0;
       padding: 0;
       line-height: var(--shopping-line-height);
+
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -442,6 +447,15 @@
       margin: 0;
       line-height: 1.25;
     }
+    .supplements-text p{ margin: 0 0 6px 0; }
+    .supplements-text ul, .supplements-text ol{
+      margin: 4px 0 8px 0;
+      padding-left: 18px;
+    }
+    .supplements-text li{
+      margin: 0 0 4px 0;
+      line-height: 1.25;
+    }
 
     /* =========================
        TRAINING: WELCOME / SCHEDULE / SESSIONS
@@ -459,51 +473,59 @@
     }
     .weekly-schedule li{ margin: 0 0 10px 0; }
 
-    /* ✅ SESSION BUBBLES: ~3/4 page target, not full-page stretched */
+    /* =========================
+       ✅ SESSION BUBBLES (FIXED: tighter spacing)
+       ========================= */
     .session-bubble{
-      min-height: 62vh;               /* ✅ was too tall; now ~3/4 page feel */
-      padding: 16px 18px 18px 18px;   /* slightly more premium padding */
+      min-height: 62vh;              /* keep ~3/4 page feel */
+      padding: 16px 18px 18px 18px;
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
     .day-card-title{
       font-size: var(--fs-title);
-      font-weight: 800;
+      font-weight: var(--fw-title);
       text-transform: uppercase;
-      margin: 0 0 12px 0;             /* premium but not huge */
+      margin: 0 0 10px 0;
       letter-spacing: 0.9px;
       line-height: 1.15;
       page-break-after: avoid;
       break-after: avoid;
     }
 
+    /* ✅ global tighter rhythm inside sessions */
     .session-content{
       white-space: pre-line;
-      line-height: 1.36;              /* balanced readability */
+      line-height: 1.18;             /* tighter lines */
     }
 
+    /* reduce vertical gaps between all blocks */
     .session-content p,
     .session-content div{
-      margin: 0 0 8px 0;
+      margin: 0 0 4px 0;             /* was 8px */
+      padding: 0;
+      line-height: 1.18;
     }
 
     .session-content ul,
     .session-content ol{
-      margin: 6px 0 10px 0;
-      padding-left: 18px;
+      margin: 4px 0 6px 0;           /* tighter list block spacing */
+      padding-left: 20px;
+      line-height: 1.18;
     }
 
     .session-content li{
-      margin: 0 0 6px 0;
-      line-height: 1.36;
+      margin: 0 0 2px 0;             /* was 6px */
+      padding: 0;
+      line-height: 1.18;
     }
 
-    /* Remove double blank lines from generated content */
+    /* kill accidental double blank lines from generators */
     .session-content br + br{ display:none !important; }
 
     /* =========================
-       NEXT STEPS / NOTES
+       NEXT STEPS
        ========================= */
     .next-steps-list{
       margin: 8px 0 0 0;
@@ -511,6 +533,9 @@
     }
     .next-steps-list li{ margin: 0 0 8px 0; }
 
+    /* =========================
+       NOTES (match workout_first + ensure full-page lines)
+       ========================= */
     .notes-lines{ margin-top: 10px; }
     .note-line{
       border-bottom: 1px solid #d2d2d2;
@@ -519,7 +544,7 @@
     }
 
     /* =========================
-       PART TAG (inside first bubble of a section)
+       PART TAG
        ========================= */
     .part-kicker{
       font-size: 14px;
@@ -552,7 +577,6 @@
       />
 
       <div class="cover-badge">Motionalyx · Progress made personal.</div>
-
       <div class="cover-title">MEAL &amp; WORKOUT<br/>BUNDLE</div>
 
       <div class="cover-subtitle">
@@ -881,7 +905,7 @@
     </div>
   </div>
 
-  <!-- ===================== NOTES ===================== -->
+  <!-- ===================== NOTES (match workout_first + more lines) ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
     <div class="bubble-block">
@@ -889,11 +913,14 @@
       <div class="section-subtitle">
         Use this space to write your reflections, wins, challenges and questions for your next check-in.
       </div>
-      <div class="notes-lines">
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+
+      <div class="notes-bubble">
+        <div class="notes-lines">
+          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+        </div>
       </div>
     </div>
   </div>
