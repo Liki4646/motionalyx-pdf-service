@@ -176,7 +176,7 @@
     }
 
     /* =========================
-       “LOOSE / PREMIUM” CARD STYLE (like at the beginning)
+       “LOOSE / PREMIUM” CARD STYLE
        ========================= */
     .bubble-loose{
       line-height: 1.55;
@@ -197,16 +197,15 @@
     }
 
     /* =========================
-       ✅ WELCOME: back to “loose”, but without huge blank tail
+       WELCOME: airy + no huge blank tail
        ========================= */
     .bubble-welcome-premium{
-      /* keep the same airy feel */
       line-height: 1.55;
     }
     .bubble-welcome-premium .card-block{
       line-height: 1.55;
-      white-space: normal;     /* prevents huge blank tail from trailing newlines */
-      padding-bottom: 18px;    /* premium breathing room at the bottom */
+      white-space: normal;
+      padding-bottom: 18px;
     }
     .bubble-welcome-premium p{
       margin: 0 0 10px 0;
@@ -221,13 +220,12 @@
     }
 
     /* =========================
-       ✅ DAY SESSION: “almost like initial” (much more open)
+       ✅ DAY SESSION: open (but now shorter via padding)
        ========================= */
     .bubble-day-open{
-      /* back to roomy */
-      white-space: pre-line;   /* keep formatting of day text */
+      white-space: pre-line;
       line-height: 1.34;
-      padding: 14px 16px;
+      padding: 11px 13px; /* ✅ updated */
     }
     .bubble-day-open .day-card{
       line-height: 1.34;
