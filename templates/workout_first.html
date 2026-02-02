@@ -33,26 +33,21 @@
        GLOBAL TYPO SYSTEM
        ========================= */
     :root{
-      /* Body */
       --fs-body: 18px;
       --lh-body: 1.28;
 
-      /* Headings */
-      --fs-main: 22px;   /* glavni naslovi */
-      --fs-title: 19px;  /* naslovi */
-      --fs-sub: 16px;    /* podnaslovi */
+      --fs-main: 22px;
+      --fs-title: 19px;
+      --fs-sub: 16px;
 
-      /* Weights */
       --fw-main: 800;
       --fw-title: 800;
       --fw-sub: 700;
 
-      /* Spacing rhythm */
       --space-1: 8px;
       --space-2: 12px;
       --space-3: 16px;
 
-      /* Card styling */
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -78,7 +73,6 @@
       word-break: normal;
     }
 
-    /* Better pagination behavior */
     p, li{
       orphans: 3;
       widows: 3;
@@ -87,7 +81,7 @@
     .page-break{ page-break-before: always; }
 
     /* =========================
-       WRAPPER
+       WRAPPERS
        ========================= */
     .content-wrapper{
       padding: 16px 10px 20px 10px;
@@ -119,7 +113,6 @@
       break-after: avoid;
     }
 
-    /* Title level (used for day titles + any in-card titles you add later) */
     .day-card-title{
       font-size: var(--fs-title);
       font-weight: var(--fw-title);
@@ -131,7 +124,6 @@
       break-after: avoid;
     }
 
-    /* Optional helpers for injected HTML content */
     h1, h2, h3, h4{
       margin: 0 0 var(--space-1) 0;
       page-break-after: avoid;
@@ -154,7 +146,6 @@
 
     /* =========================
        BUBBLE / CARD
-       - IMPORTANT: allow splitting to reduce empty space
        ========================= */
     .bubble-block{
       background:#fff;
@@ -164,20 +155,12 @@
       white-space: pre-line;
       box-shadow: var(--card-shadow);
       margin-bottom: var(--space-3);
-
-      /* allow splitting to reduce blank page tails */
       page-break-inside: auto;
       break-inside: auto;
     }
 
-    /* Keep together only when it truly matters */
-    .keep-together{
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-
     /* =========================
-       LISTS (premium + compact)
+       LISTS
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -196,7 +179,7 @@
        CARD DENSITY MODIFIERS
        ========================= */
 
-    /* WELCOME & OVERVIEW + WEEKLY WORKOUT SCHEDULE => bigger line spacing */
+    /* WELCOME + WEEKLY SCHEDULE keep nicer spacing */
     .bubble-loose{
       line-height: 1.55;
     }
@@ -215,31 +198,60 @@
       line-height: 1.55;
     }
 
-    /* DAY SESSION cards => very tight line spacing (aim ~3/4 page) */
+    /* ✅ removes extra blank lines from injected welcome text */
+    .bubble-welcome,
+    .bubble-welcome .card-block{
+      white-space: normal;
+    }
+    .bubble-welcome .card-block{
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ✅ DAY CARDS: SAME FONT SIZE, ONLY LESS SPACING */
     .bubble-day-tight{
-      line-height: 1.14;
+      /* keep font size (inherits 18px) */
+      white-space: normal; /* prevents accidental extra blank lines */
+      line-height: 1.12;   /* tighter but still readable */
+      padding: 12px 14px;  /* slightly tighter padding */
     }
+
     .bubble-day-tight .day-card{
-      line-height: 1.14;
+      white-space: normal;
+      line-height: 1.12;
     }
+
+    .bubble-day-tight .day-card-title{
+      margin: 0 0 8px 0;   /* less space under title */
+    }
+
     .bubble-day-tight p{
-      margin: 0 0 4px 0;
-      line-height: 1.14;
+      margin: 0 0 4px 0;   /* tighter paragraph spacing */
+      line-height: 1.12;
     }
-    .bubble-day-tight ul, .bubble-day-tight ol{
-      margin: 4px 0 6px 0;
+
+    .bubble-day-tight ul,
+    .bubble-day-tight ol{
+      margin: 4px 0 6px 0; /* tighter list spacing */
       padding-left: 20px;
     }
+
     .bubble-day-tight li{
-      margin: 0 0 3px 0;
-      line-height: 1.14;
+      margin: 0 0 3px 0;   /* tighter bullet spacing */
+      line-height: 1.12;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
-    .bubble-day-tight ul ul, .bubble-day-tight ol ol, .bubble-day-tight ul ol, .bubble-day-tight ol ul{
+
+    .bubble-day-tight ul ul,
+    .bubble-day-tight ol ol,
+    .bubble-day-tight ul ol,
+    .bubble-day-tight ol ul{
       margin-top: 4px;
       margin-bottom: 4px;
     }
 
-    /* SUPPLEMENTS => slightly bigger line spacing */
+    /* SUPPLEMENTS slightly looser */
     .bubble-slight-loose{
       line-height: 1.40;
     }
@@ -300,7 +312,6 @@
       font-size: 15px;
     }
 
-    /* Cover title stays larger (as requested) */
     .cover-title{
       font-size: 30px;
       font-weight: 900;
@@ -346,7 +357,7 @@
        DAY CARD
        ========================= */
     .day-card{
-      margin-top: 8px;
+      margin-top: 6px;
       white-space: pre-line;
     }
 
@@ -426,7 +437,7 @@
   <!-- ===================== PAGE 3 – WELCOME + SCHEDULE ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-loose">
+    <div class="bubble-block bubble-loose bubble-welcome">
       <div class="section-title">Welcome &amp; Overview</div>
       <div class="card-block">
         {{welcome}}
