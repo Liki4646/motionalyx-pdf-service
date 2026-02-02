@@ -81,7 +81,7 @@
     .page-break{ page-break-before: always; }
 
     /* =========================
-       WRAPPERS
+       WRAPPER
        ========================= */
     .content-wrapper{
       padding: 16px 10px 20px 10px;
@@ -160,7 +160,7 @@
     }
 
     /* =========================
-       LISTS
+       LISTS (default)
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -179,76 +179,87 @@
        CARD DENSITY MODIFIERS
        ========================= */
 
-    /* WELCOME + WEEKLY SCHEDULE keep nicer spacing */
+    /* WELCOME + WEEKLY SCHEDULE -> more air */
     .bubble-loose{
-      line-height: 1.55;
+      line-height: 1.52;
     }
     .bubble-loose .card-block{
-      line-height: 1.55;
+      line-height: 1.52;
     }
     .bubble-loose p{
       margin: 0 0 10px 0;
-      line-height: 1.55;
+      line-height: 1.52;
     }
     .bubble-loose ul, .bubble-loose ol{
       margin: 10px 0 14px 0;
     }
     .bubble-loose li{
       margin: 0 0 10px 0;
-      line-height: 1.55;
+      line-height: 1.52;
     }
 
-    /* ✅ removes extra blank lines from injected welcome text */
+    /* ✅ PREMIUM WELCOME CARD
+       - removes huge blank space caused by trailing newlines in {{welcome}}
+       - but adds intentional breathing room at the bottom (premium look)
+    */
     .bubble-welcome,
     .bubble-welcome .card-block{
-      white-space: normal;
+      white-space: normal;      /* collapses extra \n\n\n */
     }
     .bubble-welcome .card-block{
       margin: 0;
-      padding: 0;
+      padding: 0 0 10px 0;      /* intentional bottom air */
+    }
+    /* If welcome text is plain text (no <p>), this still gives nice spacing */
+    .bubble-welcome:after{
+      content: "";
+      display: block;
+      height: 6px;              /* tiny extra premium breathing room */
     }
 
-    /* ✅ DAY CARDS: SAME FONT SIZE, ONLY LESS SPACING */
-    .bubble-day-tight{
-      /* keep font size (inherits 18px) */
-      white-space: normal; /* prevents accidental extra blank lines */
-      line-height: 1.12;   /* tighter but still readable */
-      padding: 12px 14px;  /* slightly tighter padding */
-    }
-
-    .bubble-day-tight .day-card{
+    /* ✅ DAY SESSION = balanced (goal ~3/4 page)
+       - same font size (18px)
+       - moderately tighter line-height + margins (not "crammed")
+    */
+    .bubble-day-balanced{
       white-space: normal;
-      line-height: 1.12;
+      line-height: 1.20;        /* readable + shorter */
+      padding: 14px 16px;       /* keep premium padding (not too tight) */
     }
 
-    .bubble-day-tight .day-card-title{
-      margin: 0 0 8px 0;   /* less space under title */
+    .bubble-day-balanced .day-card{
+      white-space: normal;
+      line-height: 1.20;
     }
 
-    .bubble-day-tight p{
-      margin: 0 0 4px 0;   /* tighter paragraph spacing */
-      line-height: 1.12;
+    .bubble-day-balanced .day-card-title{
+      margin: 0 0 10px 0;       /* a bit more air than tight version */
     }
 
-    .bubble-day-tight ul,
-    .bubble-day-tight ol{
-      margin: 4px 0 6px 0; /* tighter list spacing */
-      padding-left: 20px;
+    .bubble-day-balanced p{
+      margin: 0 0 7px 0;        /* gives breathing room but still shorter */
+      line-height: 1.20;
     }
 
-    .bubble-day-tight li{
-      margin: 0 0 3px 0;   /* tighter bullet spacing */
-      line-height: 1.12;
+    .bubble-day-balanced ul,
+    .bubble-day-balanced ol{
+      margin: 6px 0 10px 0;
+      padding-left: 22px;
+    }
+
+    .bubble-day-balanced li{
+      margin: 0 0 5px 0;        /* moderate compression */
+      line-height: 1.20;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
-    .bubble-day-tight ul ul,
-    .bubble-day-tight ol ol,
-    .bubble-day-tight ul ol,
-    .bubble-day-tight ol ul{
-      margin-top: 4px;
-      margin-bottom: 4px;
+    .bubble-day-balanced ul ul,
+    .bubble-day-balanced ol ol,
+    .bubble-day-balanced ul ol,
+    .bubble-day-balanced ol ul{
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
 
     /* SUPPLEMENTS slightly looser */
@@ -456,7 +467,7 @@
   <!-- ===================== DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 1 Session</div>
         {{day_1}}
@@ -467,7 +478,7 @@
   <!-- ===================== DAY 2 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 2 Session</div>
         {{day_2}}
@@ -478,7 +489,7 @@
   <!-- ===================== DAY 3 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 3 Session</div>
         {{day_3}}
@@ -489,7 +500,7 @@
   <!-- ===================== DAY 4 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 4 Session</div>
         {{day_4}}
@@ -500,7 +511,7 @@
   <!-- ===================== DAY 5 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 5 Session</div>
         {{day_5}}
@@ -511,7 +522,7 @@
   <!-- ===================== DAY 6 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 6 Session</div>
         {{day_6}}
@@ -522,7 +533,7 @@
   <!-- ===================== DAY 7 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-tight">
+    <div class="bubble-block bubble-day-balanced">
       <div class="day-card">
         <div class="day-card-title">Day 7 Session</div>
         {{day_7}}
