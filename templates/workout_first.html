@@ -187,27 +187,58 @@
     }
 
     /* =========================
-       DAY CARDS (slightly tighter)
+       ✅ CARD-SPECIFIC LINE SPACING TWEAKS
        ========================= */
+
+    /* WELCOME & OVERVIEW: a bit more line spacing */
+    .bubble-welcome{
+      line-height: 1.40;
+    }
+    .bubble-welcome .card-block{
+      line-height: 1.40;
+    }
+    .bubble-welcome p{
+      margin: 0 0 10px 0;
+      line-height: 1.40;
+    }
+    .bubble-welcome li{
+      margin: 0 0 9px 0;
+      line-height: 1.40;
+    }
+
+    /* WEEKLY WORKOUT SCHEDULE: a bit more line spacing */
+    .bubble-schedule{
+      line-height: 1.40;
+    }
+    .bubble-schedule .card-block{
+      line-height: 1.40;
+    }
+    .bubble-schedule p{
+      margin: 0 0 10px 0;
+      line-height: 1.40;
+    }
+    .bubble-schedule li{
+      margin: 0 0 9px 0;
+      line-height: 1.40;
+    }
+
+    /* DAY CARDS: a bit tighter */
     .day-card{
       margin-top: 0;
       white-space: pre-line;
     }
-
     .day-card-content{
-      line-height: 1.16;
+      line-height: 1.12; /* reduced from 1.16 */
       white-space: pre-line;
     }
-
     .day-card-content ul, .day-card-content ol{
-      margin: 5px 0 8px 0;
+      margin: 4px 0 7px 0; /* slightly tighter */
       padding-left: 20px;
     }
     .day-card-content li{
-      margin: 0 0 3px 0;
-      line-height: 1.16;
+      margin: 0 0 2px 0; /* slightly tighter */
+      line-height: 1.12;  /* reduced from 1.16 */
     }
-
     .day-card-content > :last-child{
       margin-bottom: 0 !important;
     }
@@ -371,14 +402,14 @@
   <!-- ===================== PAGE 3 – WELCOME + SCHEDULE ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-welcome">
       <div class="section-title">Welcome &amp; Overview</div>
       <div class="card-block">
         {{welcome}}
       </div>
     </div>
 
-    <div class="bubble-block">
+    <div class="bubble-block bubble-schedule">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
       <div class="card-block">
