@@ -193,6 +193,72 @@
     }
 
     /* =========================
+       CARD DENSITY MODIFIERS
+       ========================= */
+
+    /* WELCOME & OVERVIEW + WEEKLY WORKOUT SCHEDULE => bigger line spacing */
+    .bubble-loose{
+      line-height: 1.55;
+    }
+    .bubble-loose .card-block{
+      line-height: 1.55;
+    }
+    .bubble-loose p{
+      margin: 0 0 10px 0;
+      line-height: 1.55;
+    }
+    .bubble-loose ul, .bubble-loose ol{
+      margin: 10px 0 14px 0;
+    }
+    .bubble-loose li{
+      margin: 0 0 10px 0;
+      line-height: 1.55;
+    }
+
+    /* DAY SESSION cards => very tight line spacing (aim ~3/4 page) */
+    .bubble-day-tight{
+      line-height: 1.14;
+    }
+    .bubble-day-tight .day-card{
+      line-height: 1.14;
+    }
+    .bubble-day-tight p{
+      margin: 0 0 4px 0;
+      line-height: 1.14;
+    }
+    .bubble-day-tight ul, .bubble-day-tight ol{
+      margin: 4px 0 6px 0;
+      padding-left: 20px;
+    }
+    .bubble-day-tight li{
+      margin: 0 0 3px 0;
+      line-height: 1.14;
+    }
+    .bubble-day-tight ul ul, .bubble-day-tight ol ol, .bubble-day-tight ul ol, .bubble-day-tight ol ul{
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    /* SUPPLEMENTS => slightly bigger line spacing */
+    .bubble-slight-loose{
+      line-height: 1.40;
+    }
+    .bubble-slight-loose .card-block{
+      line-height: 1.40;
+    }
+    .bubble-slight-loose p{
+      margin: 0 0 8px 0;
+      line-height: 1.40;
+    }
+    .bubble-slight-loose ul, .bubble-slight-loose ol{
+      margin: 8px 0 12px 0;
+    }
+    .bubble-slight-loose li{
+      margin: 0 0 8px 0;
+      line-height: 1.40;
+    }
+
+    /* =========================
        COVER PAGE
        ========================= */
     .cover-page{
@@ -360,14 +426,14 @@
   <!-- ===================== PAGE 3 – WELCOME + SCHEDULE ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-loose">
       <div class="section-title">Welcome &amp; Overview</div>
       <div class="card-block">
         {{welcome}}
       </div>
     </div>
 
-    <div class="bubble-block">
+    <div class="bubble-block bubble-loose">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
       <div class="card-block">
@@ -379,7 +445,7 @@
   <!-- ===================== DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 1 Session</div>
         {{day_1}}
@@ -390,7 +456,7 @@
   <!-- ===================== DAY 2 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 2 Session</div>
         {{day_2}}
@@ -401,7 +467,7 @@
   <!-- ===================== DAY 3 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 3 Session</div>
         {{day_3}}
@@ -412,7 +478,7 @@
   <!-- ===================== DAY 4 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 4 Session</div>
         {{day_4}}
@@ -423,7 +489,7 @@
   <!-- ===================== DAY 5 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 5 Session</div>
         {{day_5}}
@@ -434,7 +500,7 @@
   <!-- ===================== DAY 6 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 6 Session</div>
         {{day_6}}
@@ -445,7 +511,7 @@
   <!-- ===================== DAY 7 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-day-tight">
       <div class="day-card">
         <div class="day-card-title">Day 7 Session</div>
         {{day_7}}
@@ -478,7 +544,7 @@
   <!-- ===================== SUPPLEMENTS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block">
+    <div class="bubble-block bubble-slight-loose">
       <div class="section-title">Motionalyx Supplement Recommendations</div>
       <div class="section-subtitle">Optional support on top of consistent training, sleep and nutrition.</div>
       <div class="card-block">
@@ -516,13 +582,24 @@
       <div class="section-subtitle">
         Use this space to write your reflections, wins, challenges and questions for your next check-in.
       </div>
-      <div class="notes-bubble">
-        <div class="notes-lines">
-          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-          <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
-        </div>
+
+      <div class="notes-lines">
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
+        <div class="note-line"></div>
       </div>
     </div>
   </div>
