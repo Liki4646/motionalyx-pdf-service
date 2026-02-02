@@ -33,21 +33,26 @@
        GLOBAL TYPO SYSTEM
        ========================= */
     :root{
+      /* Body */
       --fs-body: 18px;
       --lh-body: 1.28;
 
+      /* Headings */
       --fs-main: 22px;
       --fs-title: 19px;
       --fs-sub: 16px;
 
+      /* Weights */
       --fw-main: 800;
       --fw-title: 800;
       --fw-sub: 700;
 
+      /* Spacing rhythm */
       --space-1: 8px;
       --space-2: 12px;
       --space-3: 16px;
 
+      /* Card styling */
       --card-radius: 12px;
       --card-border: 1px solid #b7e7d4;
       --card-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -81,7 +86,7 @@
     .page-break{ page-break-before: always; }
 
     /* =========================
-       WRAPPER
+       WRAPPERS
        ========================= */
     .content-wrapper{
       padding: 16px 10px 20px 10px;
@@ -113,6 +118,7 @@
       break-after: avoid;
     }
 
+    /* Title level (used for day titles + any in-card titles you add later) */
     .day-card-title{
       font-size: var(--fs-title);
       font-weight: var(--fw-title);
@@ -159,13 +165,13 @@
       break-inside: auto;
     }
 
-    /* Day bubble padding shorter (your request) */
-    .day-bubble{
-      padding: 11px 13px;
+    .keep-together{
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
 
     /* =========================
-       LISTS (base)
+       LISTS
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -175,51 +181,13 @@
       margin: 0 0 6px 0;
       padding: 0;
     }
-
-    /* =========================
-       LOOSE / PREMIUM CARDS
-       ========================= */
-    .bubble-loose{
-      line-height: 1.55;
-    }
-    .bubble-loose .card-block{
-      line-height: 1.55;
-    }
-    .bubble-loose p{
-      margin: 0 0 10px 0;
-      line-height: 1.55;
-    }
-    .bubble-loose ul, .bubble-loose ol{
-      margin: 10px 0 14px 0;
-    }
-    .bubble-loose li{
-      margin: 0 0 10px 0;
-      line-height: 1.55;
-    }
-
-    /* WELCOME: airy + no massive blank tail */
-    .bubble-welcome-premium{
-      line-height: 1.55;
-    }
-    .bubble-welcome-premium .card-block{
-      line-height: 1.55;
-      white-space: normal;
-      padding-bottom: 18px;
-    }
-    .bubble-welcome-premium p{
-      margin: 0 0 10px 0;
-      line-height: 1.55;
-    }
-    .bubble-welcome-premium ul, .bubble-welcome-premium ol{
-      margin: 10px 0 14px 0;
-    }
-    .bubble-welcome-premium li{
-      margin: 0 0 10px 0;
-      line-height: 1.55;
+    ul ul, ol ol, ul ol, ol ul{
+      margin-top: 6px;
+      margin-bottom: 6px;
     }
 
     /* =========================
-       ✅ DAY CARDS (match workout_weekly.html)
+       DAY CARDS (slightly tighter)
        ========================= */
     .day-card{
       margin-top: 0;
@@ -242,27 +210,6 @@
 
     .day-card-content > :last-child{
       margin-bottom: 0 !important;
-    }
-
-    /* =========================
-       SUPPLEMENTS slightly looser
-       ========================= */
-    .bubble-slight-loose{
-      line-height: 1.40;
-    }
-    .bubble-slight-loose .card-block{
-      line-height: 1.40;
-    }
-    .bubble-slight-loose p{
-      margin: 0 0 8px 0;
-      line-height: 1.40;
-    }
-    .bubble-slight-loose ul, .bubble-slight-loose ol{
-      margin: 8px 0 12px 0;
-    }
-    .bubble-slight-loose li{
-      margin: 0 0 8px 0;
-      line-height: 1.40;
     }
 
     /* =========================
@@ -349,7 +296,7 @@
     }
 
     /* =========================
-       NEXT STEPS / NOTES
+       NEXT STEPS
        ========================= */
     .next-steps-list{
       margin: 0;
@@ -365,6 +312,9 @@
       white-space: normal;
     }
 
+    /* =========================
+       NOTES
+       ========================= */
     .notes-lines{ margin-top: 10px; }
     .note-line{
       border-bottom: 1px solid #d2d2d2;
@@ -421,14 +371,14 @@
   <!-- ===================== PAGE 3 – WELCOME + SCHEDULE ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-welcome-premium">
+    <div class="bubble-block">
       <div class="section-title">Welcome &amp; Overview</div>
       <div class="card-block">
         {{welcome}}
       </div>
     </div>
 
-    <div class="bubble-block bubble-loose">
+    <div class="bubble-block">
       <div class="section-title">Weekly Workout Schedule</div>
       <div class="section-subtitle">Your overview for the next 7 days.</div>
       <div class="card-block">
@@ -440,7 +390,7 @@
   <!-- ===================== DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 1 Session</div>
         <div class="day-card-content">{{day_1}}</div>
@@ -451,7 +401,7 @@
   <!-- ===================== DAY 2 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 2 Session</div>
         <div class="day-card-content">{{day_2}}</div>
@@ -462,7 +412,7 @@
   <!-- ===================== DAY 3 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 3 Session</div>
         <div class="day-card-content">{{day_3}}</div>
@@ -473,7 +423,7 @@
   <!-- ===================== DAY 4 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 4 Session</div>
         <div class="day-card-content">{{day_4}}</div>
@@ -484,7 +434,7 @@
   <!-- ===================== DAY 5 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 5 Session</div>
         <div class="day-card-content">{{day_5}}</div>
@@ -495,7 +445,7 @@
   <!-- ===================== DAY 6 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 6 Session</div>
         <div class="day-card-content">{{day_6}}</div>
@@ -506,7 +456,7 @@
   <!-- ===================== DAY 7 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block day-bubble">
+    <div class="bubble-block">
       <div class="day-card">
         <div class="day-card-title">Day 7 Session</div>
         <div class="day-card-content">{{day_7}}</div>
@@ -539,7 +489,7 @@
   <!-- ===================== SUPPLEMENTS ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-slight-loose">
+    <div class="bubble-block">
       <div class="section-title">Motionalyx Supplement Recommendations</div>
       <div class="section-subtitle">Optional support on top of consistent training, sleep and nutrition.</div>
       <div class="card-block">
