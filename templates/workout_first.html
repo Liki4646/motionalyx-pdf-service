@@ -159,8 +159,13 @@
       break-inside: auto;
     }
 
+    /* Day bubble padding shorter (your request) */
+    .day-bubble{
+      padding: 11px 13px;
+    }
+
     /* =========================
-       LISTS (default)
+       LISTS (base)
        ========================= */
     ul, ol{
       margin: 6px 0 10px 0;
@@ -170,13 +175,9 @@
       margin: 0 0 6px 0;
       padding: 0;
     }
-    ul ul, ol ol, ul ol, ol ul{
-      margin-top: 6px;
-      margin-bottom: 6px;
-    }
 
     /* =========================
-       “LOOSE / PREMIUM” CARD STYLE
+       LOOSE / PREMIUM CARDS
        ========================= */
     .bubble-loose{
       line-height: 1.55;
@@ -196,9 +197,7 @@
       line-height: 1.55;
     }
 
-    /* =========================
-       WELCOME: airy + no huge blank tail
-       ========================= */
+    /* WELCOME: airy + no massive blank tail */
     .bubble-welcome-premium{
       line-height: 1.55;
     }
@@ -220,31 +219,34 @@
     }
 
     /* =========================
-       ✅ DAY SESSION: open (but now shorter via padding)
+       ✅ DAY CARDS (match workout_weekly.html)
        ========================= */
-    .bubble-day-open{
+    .day-card{
+      margin-top: 0;
       white-space: pre-line;
-      line-height: 1.34;
-      padding: 11px 13px; /* ✅ updated */
-    }
-    .bubble-day-open .day-card{
-      line-height: 1.34;
-    }
-    .bubble-day-open p{
-      margin: 0 0 10px 0;
-      line-height: 1.34;
-    }
-    .bubble-day-open ul,
-    .bubble-day-open ol{
-      margin: 10px 0 14px 0;
-      padding-left: 22px;
-    }
-    .bubble-day-open li{
-      margin: 0 0 9px 0;
-      line-height: 1.34;
     }
 
-    /* SUPPLEMENTS slightly looser */
+    .day-card-content{
+      line-height: 1.16;
+      white-space: pre-line;
+    }
+
+    .day-card-content ul, .day-card-content ol{
+      margin: 5px 0 8px 0;
+      padding-left: 20px;
+    }
+    .day-card-content li{
+      margin: 0 0 3px 0;
+      line-height: 1.16;
+    }
+
+    .day-card-content > :last-child{
+      margin-bottom: 0 !important;
+    }
+
+    /* =========================
+       SUPPLEMENTS slightly looser
+       ========================= */
     .bubble-slight-loose{
       line-height: 1.40;
     }
@@ -347,7 +349,7 @@
     }
 
     /* =========================
-       NEXT STEPS
+       NEXT STEPS / NOTES
        ========================= */
     .next-steps-list{
       margin: 0;
@@ -363,9 +365,6 @@
       white-space: normal;
     }
 
-    /* =========================
-       NOTES
-       ========================= */
     .notes-lines{ margin-top: 10px; }
     .note-line{
       border-bottom: 1px solid #d2d2d2;
@@ -441,10 +440,10 @@
   <!-- ===================== DAY 1 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 1 Session</div>
-        {{day_1}}
+        <div class="day-card-content">{{day_1}}</div>
       </div>
     </div>
   </div>
@@ -452,10 +451,10 @@
   <!-- ===================== DAY 2 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 2 Session</div>
-        {{day_2}}
+        <div class="day-card-content">{{day_2}}</div>
       </div>
     </div>
   </div>
@@ -463,10 +462,10 @@
   <!-- ===================== DAY 3 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 3 Session</div>
-        {{day_3}}
+        <div class="day-card-content">{{day_3}}</div>
       </div>
     </div>
   </div>
@@ -474,10 +473,10 @@
   <!-- ===================== DAY 4 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 4 Session</div>
-        {{day_4}}
+        <div class="day-card-content">{{day_4}}</div>
       </div>
     </div>
   </div>
@@ -485,10 +484,10 @@
   <!-- ===================== DAY 5 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 5 Session</div>
-        {{day_5}}
+        <div class="day-card-content">{{day_5}}</div>
       </div>
     </div>
   </div>
@@ -496,10 +495,10 @@
   <!-- ===================== DAY 6 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 6 Session</div>
-        {{day_6}}
+        <div class="day-card-content">{{day_6}}</div>
       </div>
     </div>
   </div>
@@ -507,10 +506,10 @@
   <!-- ===================== DAY 7 ===================== -->
   <div class="page-break"></div>
   <div class="content-wrapper">
-    <div class="bubble-block bubble-day-open">
+    <div class="bubble-block day-bubble">
       <div class="day-card">
         <div class="day-card-title">Day 7 Session</div>
-        {{day_7}}
+        <div class="day-card-content">{{day_7}}</div>
       </div>
     </div>
   </div>
